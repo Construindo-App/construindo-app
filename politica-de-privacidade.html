@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidade — Construindo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#FAF8F5;
+      --white:#fff;
+      --orange:#F05A28;
+      --orange-lt:#FEF0EA;
+      --text:#1A1A2E;
+      --muted:#6B7280;
+      --border:#EDE8E2;
+      --dark:#111827;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+
+    /* ── NAV ── */
+    nav{
+      background:var(--white);border-bottom:1px solid var(--border);
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:0 56px;height:72px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{font-size:26px;font-weight:900;color:var(--orange);letter-spacing:-0.5px;font-style:italic}
+    .nav-pill-group{
+      display:flex;align-items:center;gap:4px;
+      background:#F5F0EB;border-radius:100px;padding:5px 6px;
+    }
+    .nav-pill-group a{
+      font-size:14px;font-weight:500;color:var(--text);
+      padding:8px 22px;border-radius:100px;
+      transition:background .2s,color .2s;
+    }
+    .nav-pill-group a:hover{color:var(--orange)}
+    .nav-pill-group a.active{background:var(--orange);color:#fff;font-weight:600}
+    .nav-download{
+      background:var(--orange);color:#fff;
+      font-size:14px;font-weight:600;
+      padding:11px 28px;border-radius:100px;
+      transition:background .2s,transform .15s;
+    }
+    .nav-download:hover{background:#D94E20;transform:translateY(-1px)}
+
+    /* ── PAGE HEADER ── */
+    .page-header{
+      padding-top:72px;
+      background:linear-gradient(160deg,#FAF8F5 60%,#FDE8DA 100%);
+      text-align:center;
+      padding-bottom:56px;
+      padding-left:24px;
+      padding-right:24px;
+      border-bottom:1px solid var(--border);
+    }
+    .page-header-inner{padding-top:56px}
+    .page-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--orange-lt);color:var(--orange);
+      font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+      padding:6px 16px;border-radius:100px;margin-bottom:20px;
+    }
+    .page-header h1{
+      font-size:clamp(28px,4vw,44px);font-weight:800;
+      letter-spacing:-1px;line-height:1.1;color:var(--text);
+    }
+    .page-header p{
+      font-size:15px;color:var(--muted);margin-top:12px;
+    }
+
+    /* ── CONTENT ── */
+    .doc-wrap{
+      max-width:780px;margin:0 auto;
+      padding:64px 24px 96px;
+    }
+
+    /* table of contents */
+    .toc{
+      background:var(--white);border:1px solid var(--border);
+      border-radius:16px;padding:28px 32px;margin-bottom:56px;
+    }
+    .toc h2{font-size:15px;font-weight:700;margin-bottom:16px;color:var(--text)}
+    .toc ol{list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:toc}
+    .toc ol li{counter-increment:toc;display:flex;align-items:baseline;gap:8px}
+    .toc ol li::before{content:counter(toc)".";font-size:13px;font-weight:700;color:var(--orange);min-width:20px}
+    .toc ol li a{font-size:14px;color:var(--muted);transition:color .2s}
+    .toc ol li a:hover{color:var(--orange)}
+
+    /* sections */
+    .doc-section{margin-bottom:48px;scroll-margin-top:100px}
+    .doc-section h2{
+      font-size:18px;font-weight:800;color:var(--orange);
+      padding-bottom:10px;border-bottom:2px solid var(--orange-lt);
+      margin-bottom:20px;letter-spacing:-.3px;
+    }
+    .doc-section h3{
+      font-size:15px;font-weight:700;color:var(--text);
+      margin-top:24px;margin-bottom:10px;
+    }
+    .doc-section p{
+      font-size:15px;color:#374151;line-height:1.75;margin-bottom:14px;
+    }
+    .doc-section ul,.doc-section ol{
+      padding-left:20px;display:flex;flex-direction:column;gap:8px;
+      margin-bottom:14px;
+    }
+    .doc-section ul li,.doc-section ol li{
+      font-size:15px;color:#374151;line-height:1.65;
+    }
+    .doc-section ul{list-style:none;padding-left:0}
+    .doc-section ul li{
+      display:flex;align-items:baseline;gap:10px;
+    }
+    .doc-section ul li::before{
+      content:'';width:6px;height:6px;border-radius:50%;
+      background:var(--orange);flex-shrink:0;margin-top:7px;
+    }
+    .doc-section strong{font-weight:700;color:var(--text)}
+
+    /* info box */
+    .info-box{
+      background:var(--orange-lt);border-left:4px solid var(--orange);
+      border-radius:0 10px 10px 0;
+      padding:16px 20px;margin:20px 0;
+    }
+    .info-box p{margin-bottom:0;color:var(--text)}
+
+    /* contact card */
+    .contact-card{
+      background:var(--white);border:1px solid var(--border);
+      border-radius:14px;padding:24px 28px;margin-top:16px;
+    }
+    .contact-card p{margin-bottom:8px;font-size:14px}
+    .contact-card p:last-child{margin-bottom:0}
+    .contact-card strong{color:var(--text)}
+    .contact-card a{color:var(--orange);font-weight:600}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark);padding:60px 56px 32px}
+    .footer-top{
+      display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:48px;margin-bottom:48px;
+    }
+    .footer-logo{font-size:22px;font-weight:900;color:var(--orange);font-style:italic;margin-bottom:12px}
+    .footer-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;max-width:240px}
+    .footer-socials{display:flex;gap:10px;margin-top:20px}
+    .social-btn{
+      width:34px;height:34px;border-radius:50%;
+      background:rgba(255,255,255,.08);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(255,255,255,.6);font-size:13px;font-weight:700;
+      transition:background .2s;
+    }
+    .social-btn:hover{background:var(--orange)}
+    .footer-col h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:18px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+    .footer-col ul li a{font-size:14px;color:rgba(255,255,255,.5);transition:color .2s}
+    .footer-col ul li a:hover{color:#fff}
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    }
+    .footer-bottom p{font-size:13px;color:rgba(255,255,255,.35)}
+
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .nav-pill-group{display:none}
+      .page-header-inner{padding-top:40px}
+      .doc-wrap{padding:40px 20px 72px}
+      .toc{padding:20px}
+      footer{padding:48px 20px 24px}
+      .footer-top{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Construindo</a>
+  <div class="nav-pill-group">
+    <a href="index.html">Início</a>
+    <a href="index.html#sobre">Sobre Nós</a>
+    <a href="index.html#recursos">Recursos</a>
+    <a href="index.html#contato">Contato</a>
+  </div>
+  <a href="#" class="nav-download">Baixar App</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-badge">📋 Documento Legal</div>
+    <h1>Política de Privacidade</h1>
+    <p>Versão 1.0 — 17 de março de 2026</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="doc-wrap">
+
+  <!-- Intro -->
+  <div class="doc-section">
+    <p>A sua privacidade é uma prioridade para nós. Esta Política de Privacidade descreve, de forma clara e transparente, como coletamos, utilizamos, armazenamos, compartilhamos e protegemos seus dados pessoais, em plena conformidade com a Lei Geral de Proteção de Dados Pessoais — LGPD (Lei n.º 13.709/2018), com o Marco Civil da Internet (Lei n.º 12.965/2014) e demais normas aplicáveis.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>Índice</h2>
+    <ol>
+      <li><a href="#s1">Identificação do Controlador</a></li>
+      <li><a href="#s2">Dados Pessoais Coletados</a></li>
+      <li><a href="#s3">Finalidades e Bases Legais do Tratamento</a></li>
+      <li><a href="#s4">Compartilhamento de Dados Pessoais</a></li>
+      <li><a href="#s5">Retenção e Eliminação de Dados</a></li>
+      <li><a href="#s6">Direitos dos Titulares de Dados</a></li>
+      <li><a href="#s7">Segurança dos Dados</a></li>
+      <li><a href="#s8">Cookies e Tecnologias Similares</a></li>
+      <li><a href="#s9">Dados de Menores de Idade</a></li>
+      <li><a href="#s10">Encarregado de Proteção de Dados (DPO)</a></li>
+      <li><a href="#s11">Alterações nesta Política</a></li>
+      <li><a href="#s12">Autoridade Nacional de Proteção de Dados</a></li>
+      <li><a href="#s13">Contato e Canal de Privacidade</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-section" id="s1">
+    <h2>1. IDENTIFICAÇÃO DO CONTROLADOR</h2>
+    <p>[Nome da Empresa], inscrita no CNPJ sob o n.º [CNPJ da Empresa], com sede em [Endereço Completo], é a Controladora dos Dados Pessoais coletados por meio da Plataforma <strong>Construindo</strong>, sendo responsável pelas decisões referentes ao tratamento de dados pessoais.</p>
+    <p>Encarregado de Proteção de Dados (DPO): [Nome do DPO]</p>
+    <p>Contato do DPO: <a href="mailto:dpo@construindo.com.br">dpo@construindo.com.br</a></p>
+  </div>
+
+  <div class="doc-section" id="s2">
+    <h2>2. DADOS PESSOAIS COLETADOS</h2>
+    <h3>2.1 Dados fornecidos pelo Usuário</h3>
+    <p>Durante o cadastro e uso da Plataforma, podemos coletar:</p>
+    <ul>
+      <li>Nome completo;</li>
+      <li>Endereço de e-mail;</li>
+      <li>CPF ou CNPJ;</li>
+      <li>Número de telefone/celular;</li>
+      <li>Endereço residencial ou comercial;</li>
+      <li>Dados profissionais (CRECI, no caso do Corretor de Imóvel);</li>
+      <li>Senha (armazenada em formato criptografado);</li>
+      <li>Informações financeiras e contratuais inseridas voluntariamente (notas fiscais, parcelas, valores).</li>
+    </ul>
+    <h3>2.2 Dados coletados automaticamente</h3>
+    <p>Ao acessar a Plataforma, podemos coletar automaticamente:</p>
+    <ul>
+      <li>Endereço IP e dados de geolocalização (quando autorizado pelo Usuário);</li>
+      <li>Tipo de dispositivo, sistema operacional e versão do aplicativo;</li>
+      <li>Identificadores de dispositivo (Device ID);</li>
+      <li>Dados de navegação, páginas acessadas e tempo de uso;</li>
+      <li>Logs de acesso, conforme exigido pelo art. 15 do Marco Civil da Internet.</li>
+    </ul>
+    <h3>2.3 Dados de terceiros</h3>
+    <p>Poderemos receber dados pessoais de Usuários fornecidos por outras partes, como quando um Construtor cadastra um Cliente ou um Corretor na Plataforma. Nestes casos, a parte que insere os dados declara possuir base legal adequada para o compartilhamento.</p>
+  </div>
+
+  <div class="doc-section" id="s3">
+    <h2>3. FINALIDADES E BASES LEGAIS DO TRATAMENTO</h2>
+    <p>Nos termos do art. 7.º da LGPD, o tratamento de dados pessoais na Plataforma ocorre com fundamento nas seguintes bases legais:</p>
+    <h3>3.1 Execução de Contrato (art. 7.º, V, LGPD)</h3>
+    <p>Os dados são tratados para viabilizar a prestação dos serviços contratados, incluindo:</p>
+    <ul>
+      <li>Autenticação e controle de acesso por perfil de Usuário;</li>
+      <li>Gerenciamento de obras, lançamentos financeiros e documentos;</li>
+      <li>Registro e acompanhamento de vendas e pagamentos de parcelas;</li>
+      <li>Agendamento de visitas a imóveis;</li>
+      <li>Comunicação entre Construtor, Cliente e Corretor.</li>
+    </ul>
+    <h3>3.2 Cumprimento de Obrigação Legal ou Regulatória (art. 7.º, II, LGPD)</h3>
+    <p>Dados poderão ser tratados para cumprir exigências legais, tais como:</p>
+    <ul>
+      <li>Guarda de logs de acesso pelo prazo de 6 (seis) meses, nos termos do art. 15 do Marco Civil da Internet;</li>
+      <li>Atendimento a requisições de autoridades públicas, judiciais ou regulatórias competentes;</li>
+      <li>Cumprimento de obrigações fiscais e contábeis.</li>
+    </ul>
+    <h3>3.3 Legítimo Interesse (art. 7.º, IX, LGPD)</h3>
+    <p>Poderemos tratar dados com base no legítimo interesse da Empresa, observados os limites do art. 10 da LGPD, para:</p>
+    <ul>
+      <li>Prevenção a fraudes e garantia da segurança da Plataforma;</li>
+      <li>Melhoria contínua dos serviços e funcionalidades;</li>
+      <li>Envio de comunicações sobre atualizações e novidades da Plataforma.</li>
+    </ul>
+    <h3>3.4 Consentimento (art. 7.º, I, LGPD)</h3>
+    <p>Para finalidades específicas não previstas nas bases acima, como o envio de comunicações de marketing e uso de dados de localização, solicitaremos o consentimento expresso do Usuário, que poderá ser revogado a qualquer momento.</p>
+  </div>
+
+  <div class="doc-section" id="s4">
+    <h2>4. COMPARTILHAMENTO DE DADOS PESSOAIS</h2>
+    <p>Os dados pessoais dos Usuários poderão ser compartilhados nas seguintes hipóteses:</p>
+    <h3>4.1 Entre Usuários da Plataforma</h3>
+    <ul>
+      <li>O Construtor terá acesso aos dados dos Clientes e Corretores vinculados às suas obras;</li>
+      <li>O Corretor terá acesso limitado aos dados dos Clientes referentes às obras por ele comercializadas;</li>
+      <li>O Cliente terá acesso apenas aos seus próprios dados e documentos a ele disponibilizados pelo Construtor.</li>
+    </ul>
+    <h3>4.2 Fornecedores e Parceiros</h3>
+    <p>Poderemos compartilhar dados com terceiros que nos prestam serviços essenciais, tais como:</p>
+    <ul>
+      <li>Provedores de infraestrutura em nuvem (armazenamento e processamento de dados);</li>
+      <li>Plataformas de pagamento (para processamento de cobranças de assinatura);</li>
+      <li>Serviços de envio de e-mail e notificações push;</li>
+      <li>Ferramentas de análise e monitoramento de desempenho.</li>
+    </ul>
+    <p>Esses fornecedores atuam como Operadores de Dados e estão contratualmente obrigados a tratar os dados conforme nossas instruções e em conformidade com a LGPD.</p>
+    <h3>4.3 Transferência Internacional</h3>
+    <p>Eventuais transferências internacionais de dados pessoais somente ocorrerão para países ou organismos internacionais que proporcionem grau de proteção de dados adequado, ou mediante a adoção de salvaguardas específicas, conforme art. 33 da LGPD.</p>
+    <h3>4.4 Autoridades</h3>
+    <p>Dados poderão ser compartilhados com autoridades públicas, judiciais ou regulatórias, sempre que exigido por lei ou ordem judicial.</p>
+  </div>
+
+  <div class="doc-section" id="s5">
+    <h2>5. RETENÇÃO E ELIMINAÇÃO DE DADOS</h2>
+    <p>Os dados pessoais serão retidos pelo tempo necessário para as finalidades que motivaram sua coleta, observados os seguintes critérios:</p>
+    <ul>
+      <li><strong>Dados de conta e contratuais:</strong> mantidos enquanto durar o relacionamento com o Usuário e, após o encerramento da conta, pelo prazo de 5 (cinco) anos para fins de cumprimento de obrigações legais, ressalvadas exigências específicas;</li>
+      <li><strong>Logs de acesso:</strong> mantidos por 6 (seis) meses, nos termos do art. 15 do Marco Civil da Internet;</li>
+      <li><strong>Dados financeiros e de notas fiscais:</strong> mantidos pelo prazo exigido pela legislação fiscal e tributária aplicável;</li>
+      <li><strong>Dados tratados com base no consentimento:</strong> eliminados após a revogação do consentimento, salvo se houver outra base legal que justifique a retenção.</li>
+    </ul>
+    <p>Após o prazo de retenção, os dados serão eliminados de forma segura ou anonimizados, nos termos do art. 16 da LGPD.</p>
+  </div>
+
+  <div class="doc-section" id="s6">
+    <h2>6. DIREITOS DOS TITULARES DE DADOS</h2>
+    <p>Nos termos dos arts. 17 a 22 da LGPD, o titular de dados pessoais possui os seguintes direitos, que poderão ser exercidos a qualquer momento:</p>
+    <ul>
+      <li><strong>Confirmação:</strong> confirmar a existência de tratamento de seus dados pessoais;</li>
+      <li><strong>Acesso:</strong> acessar os dados pessoais tratados pela Empresa;</li>
+      <li><strong>Correção:</strong> solicitar a correção de dados incompletos, inexatos ou desatualizados;</li>
+      <li><strong>Anonimização, bloqueio ou eliminação:</strong> solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD;</li>
+      <li><strong>Portabilidade:</strong> solicitar a portabilidade dos dados a outro fornecedor de serviço ou produto, quando aplicável;</li>
+      <li><strong>Eliminação:</strong> solicitar a eliminação dos dados tratados com base no consentimento;</li>
+      <li><strong>Informação sobre compartilhamento:</strong> obter informações sobre as entidades com as quais a Empresa compartilhou seus dados;</li>
+      <li><strong>Revogação do consentimento:</strong> revogar o consentimento a qualquer momento, sem prejuízo da licitude do tratamento realizado anteriormente;</li>
+      <li><strong>Oposição:</strong> se opor ao tratamento realizado com fundamento em bases legais distintas do consentimento, nos casos de não conformidade com a LGPD.</li>
+    </ul>
+    <div class="info-box">
+      <p>Para exercer qualquer desses direitos, o Usuário deverá entrar em contato por meio do e-mail <strong>privacidade@construindo.com.br</strong>, com identificação suficiente para confirmação de sua identidade. A Empresa responderá às solicitações em até <strong>15 (quinze) dias</strong>.</p>
+    </div>
+  </div>
+
+  <div class="doc-section" id="s7">
+    <h2>7. SEGURANÇA DOS DADOS</h2>
+    <p>A Empresa adota medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acesso não autorizado, perda acidental, destruição ou divulgação indevida, incluindo:</p>
+    <ul>
+      <li>Criptografia dos dados em trânsito (protocolo TLS/SSL) e em repouso;</li>
+      <li>Controle de acesso baseado em perfil (RBAC), garantindo que cada Usuário acesse apenas as informações pertinentes ao seu perfil;</li>
+      <li>Autenticação com senhas criptografadas (hashing);</li>
+      <li>Monitoramento contínuo de segurança e registros de auditoria (logs);</li>
+      <li>Política de acesso mínimo necessário para colaboradores internos;</li>
+      <li>Programas de treinamento em privacidade e segurança da informação para a equipe.</li>
+    </ul>
+    <p>Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos Usuários, a Empresa notificará a Autoridade Nacional de Proteção de Dados (ANPD) e os Usuários afetados em prazo razoável, conforme art. 48 da LGPD.</p>
+  </div>
+
+  <div class="doc-section" id="s8">
+    <h2>8. COOKIES E TECNOLOGIAS SIMILARES</h2>
+    <p>A versão web da Plataforma pode utilizar cookies e tecnologias similares para:</p>
+    <ul>
+      <li>Manter a sessão do Usuário autenticado;</li>
+      <li>Lembrar preferências e configurações;</li>
+      <li>Analisar o uso da Plataforma e aprimorar a experiência.</li>
+    </ul>
+    <p>O Usuário pode configurar seu navegador para bloquear cookies; no entanto, isso pode impactar o funcionamento de algumas funcionalidades da Plataforma. No aplicativo mobile, identificadores de dispositivo podem ser utilizados com finalidades similares.</p>
+  </div>
+
+  <div class="doc-section" id="s9">
+    <h2>9. DADOS DE MENORES DE IDADE</h2>
+    <p>A Plataforma não é destinada a pessoas menores de 18 (dezoito) anos. A Empresa não coleta intencionalmente dados pessoais de menores. Caso identifiquemos que dados de menores foram coletados sem o consentimento adequado, esses dados serão eliminados de forma imediata.</p>
+  </div>
+
+  <div class="doc-section" id="s10">
+    <h2>10. ENCARREGADO DE PROTEÇÃO DE DADOS (DPO)</h2>
+    <p>Nos termos do art. 41 da LGPD, a Empresa designou um Encarregado pelo Tratamento de Dados Pessoais (Data Protection Officer — DPO), responsável por:</p>
+    <ul>
+      <li>Aceitar reclamações e comunicações dos titulares;</li>
+      <li>Prestar esclarecimentos e adotar providências;</li>
+      <li>Receber comunicações da ANPD;</li>
+      <li>Orientar os colaboradores sobre as práticas de proteção de dados.</li>
+    </ul>
+    <p>Contato do DPO: <a href="mailto:dpo@construindo.com.br" style="color:var(--orange);font-weight:600">dpo@construindo.com.br</a></p>
+  </div>
+
+  <div class="doc-section" id="s11">
+    <h2>11. ALTERAÇÕES NESTA POLÍTICA</h2>
+    <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças nas práticas de tratamento de dados ou em decorrência de alterações legais. A Empresa notificará os Usuários sobre alterações relevantes com antecedência mínima de 30 (trinta) dias, por e-mail ou aviso na Plataforma.</p>
+    <p>A versão mais recente desta Política estará sempre disponível na Plataforma. O uso continuado após a entrada em vigor das alterações implica a aceitação da nova versão.</p>
+  </div>
+
+  <div class="doc-section" id="s12">
+    <h2>12. AUTORIDADE NACIONAL DE PROTEÇÃO DE DADOS</h2>
+    <p>Caso o Usuário entenda que seus direitos não foram atendidos de forma satisfatória, poderá apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), nos termos do art. 18, § 1.º, da LGPD.</p>
+    <p>Site da ANPD: <a href="https://www.gov.br/anpd" target="_blank" rel="noopener" style="color:var(--orange);font-weight:600">www.gov.br/anpd</a></p>
+  </div>
+
+  <div class="doc-section" id="s13">
+    <h2>13. CONTATO E CANAL DE PRIVACIDADE</h2>
+    <p>Para exercer seus direitos, tirar dúvidas ou apresentar reclamações sobre o tratamento de seus dados pessoais:</p>
+    <div class="contact-card">
+      <p>📧 <strong>E-mail de Privacidade:</strong> <a href="mailto:privacidade@construindo.com.br">privacidade@construindo.com.br</a></p>
+      <p>🔒 <strong>E-mail do DPO:</strong> <a href="mailto:dpo@construindo.com.br">dpo@construindo.com.br</a></p>
+      <p>📍 <strong>Endereço:</strong> [Endereço completo da Empresa]</p>
+      <p>📞 <strong>Telefone:</strong> [Número de contato]</p>
+    </div>
+    <p style="margin-top:28px;font-size:14px;color:var(--muted)"><strong>Construindo</strong> — Última atualização: 17 de março de 2026</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Construindo</div>
+      <p>Conecte construtoras, engenheiros e clientes. Gestão de obras simples, transparente e acessível para todo o Brasil.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">tw</a>
+        <a href="#" class="social-btn">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#recursos">Recursos</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="#">Cronograma</a></li>
+        <li><a href="#">Orçamentos</a></li>
+        <li><a href="#">Diário de Obra</a></li>
+        <li><a href="#">Equipes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="politica-de-privacidade.html">Privacidade</a></li>
+        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+        <li><a href="#">Central de Ajuda</a></li>
+        <li><a href="#">Fale Conosco</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Construindo App. Todos os direitos reservados.</p>
+    <p>Feito com ❤️ para a construção civil brasileira</p>
+  </div>
+</footer>
+
+</body>
+</html>
