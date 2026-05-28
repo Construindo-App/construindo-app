@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Plus_Jakarta_Sans, Cardo } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -9,6 +9,12 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ['300', '400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-jakarta',
+})
+
+const cardo = Cardo({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-cardo',
 })
 
 const bogue = localFont({
@@ -32,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${jakarta.variable} ${bogue.variable}`}>
+    <html lang="pt-BR" className={`${jakarta.variable} ${bogue.variable} ${cardo.variable}`}>
       <body>{children}<Analytics /></body>
     </html>
   )
