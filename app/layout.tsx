@@ -9,12 +9,14 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ['300', '400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-jakarta',
+  display: 'swap',
 })
 
 const cardo = Cardo({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-cardo',
+  display: 'swap',
 })
 
 const bogue = localFont({
@@ -24,6 +26,7 @@ const bogue = localFont({
     { path: '../public/fonts/bogue-semibold.ttf', weight: '600', style: 'normal' },
   ],
   variable: '--font-bogue',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
