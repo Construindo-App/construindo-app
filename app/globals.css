@@ -24,7 +24,7 @@ img{display:block;max-width:100%}
 
 /* ─── HEADING FONT ─── */
 h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.final-cta h2,.hero-badge{
-  font-family:var(--font-cardo),var(--font-bogue),var(--font-jakarta),serif;
+  font-family:var(--font-bogue),var(--font-jakarta),serif;
 }
 
 /* ─── SITE NAV ─── */
@@ -301,7 +301,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.final-cta h2,.hero-badge{
 .btn-primary svg,.btn-secondary svg{width:18px;height:18px;flex-shrink:0}
 
 .hero-free{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
-.hero-free-star{color:var(--orange);font-size:16px;font-family:var(--font-cardo),serif;display:inline-block;animation:heroStarSpin 6s linear infinite;line-height:1}
+.hero-free-star{color:var(--orange);font-size:16px;font-family:var(--font-bogue),sans-serif;display:inline-block;animation:heroStarSpin 6s linear infinite;line-height:1}
 @keyframes heroStarSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 .btn-store{
