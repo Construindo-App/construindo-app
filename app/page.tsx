@@ -132,66 +132,67 @@ export default function Home() {
       </section>
 
       {/* FEATURE DARK */}
-      <section className="sec feat-dark">
+      <section className="sec feat-dark-sec">
+        <div className="feat-dark">
         <div className="feat-dark-inner">
           <div data-anim="fade-left">
-            <div className="eyebrow">Acompanhamento de tarefas</div>
-            <h2 className="sec-h2">Cada equipe sabe<br />exatamente o que fazer</h2>
-            <p className="sec-sub" style={{ color: 'var(--dark-muted)' }}>Distribua tarefas por etapa, perfil e data. Cada profissional vê só o que lhe compete — sem ruído, sem confusão.</p>
+            <h2 className="sec-h2">Para Imobiliárias<br />e Corretores</h2>
+            <p className="sec-sub" style={{ color: 'var(--dark-muted)' }}>Tudo que o corretor precisa para acompanhar clientes, obras e comissões — em um único lugar, em tempo real.</p>
             <div className="feat-list">
               <div className="feat-item">
                 <div className="feat-check">✓</div>
                 <div>
-                  <div className="feat-item-title">Atribuição por perfil</div>
-                  <div className="feat-item-desc">Construtores, engenheiros, mestres e subempreiteiros com acessos distintos e notificações sob medida.</div>
+                  <div className="feat-item-title">Parcelas e pagamentos dos clientes</div>
+                  <div className="feat-item-desc">Acompanhe o histórico financeiro de cada comprador, parcelas pagas, pendentes e vencimentos — sem precisar ligar para a construtora.</div>
                 </div>
               </div>
               <div className="feat-item">
                 <div className="feat-check">✓</div>
                 <div>
-                  <div className="feat-item-title">Status em tempo real</div>
-                  <div className="feat-item-desc">Pendente, em andamento, concluído — atualizado no campo pelo celular, visível no escritório na hora.</div>
+                  <div className="feat-item-title">Andamento da obra em tempo real</div>
+                  <div className="feat-item-desc">Fotos, diário de obra e percentual de avanço atualizados pela construtora. Responda seu cliente na hora, com informação precisa.</div>
                 </div>
               </div>
               <div className="feat-item">
                 <div className="feat-check">✓</div>
                 <div>
-                  <div className="feat-item-title">Alertas inteligentes</div>
-                  <div className="feat-item-desc">O sistema identifica gargalos e avisa com antecedência antes que o atraso afete o prazo de entrega.</div>
+                  <div className="feat-item-title">Repasse de comissões</div>
+                  <div className="feat-item-desc">Visualize o status de cada comissão, datas de repasse e valores previstos. Chega de planilha para controlar o que você tem a receber.</div>
                 </div>
               </div>
             </div>
           </div>
           <div className="dark-phone" data-anim="fade-right">
-            <div className="dp-title">Tarefas da Semana — Bloco A</div>
+            <div className="dp-title">Carteira de Clientes — Edifício Nobre</div>
             <div className="dp-task">
               <div className="dp-dot" style={{ background: '#4ade80' }}></div>
-              <div className="dp-name">Concretagem laje — Pav. 3</div>
-              <div className="dp-badge" style={{ background: 'rgba(74,222,128,.15)', color: '#4ade80' }}>Concluído</div>
+              <div className="dp-name">Apto 301 — Marcos Antônio</div>
+              <div className="dp-badge" style={{ background: 'rgba(74,222,128,.15)', color: '#4ade80' }}>Em dia</div>
             </div>
             <div className="dp-task">
               <div className="dp-dot" style={{ background: '#f59e0b' }}></div>
-              <div className="dp-name">Instalação hidráulica</div>
-              <div className="dp-badge" style={{ background: 'rgba(245,158,11,.15)', color: '#f59e0b' }}>Em curso</div>
+              <div className="dp-name">Apto 204 — Fernanda Lima</div>
+              <div className="dp-badge" style={{ background: 'rgba(245,158,11,.15)', color: '#f59e0b' }}>Pendente</div>
               <div className="dp-pct">72%</div>
             </div>
             <div className="dp-task">
               <div className="dp-dot" style={{ background: 'var(--orange)' }}></div>
-              <div className="dp-name">Fiação elétrica — Pav. 3</div>
-              <div className="dp-badge" style={{ background: 'rgba(222,99,51,.15)', color: 'var(--orange)' }}>Hoje</div>
+              <div className="dp-name">Apto 102 — Carlos Souza</div>
+              <div className="dp-badge" style={{ background: 'rgba(222,99,51,.15)', color: 'var(--orange)' }}>Vence hoje</div>
             </div>
             <div className="dp-task">
-              <div className="dp-dot" style={{ background: '#6B7280' }}></div>
-              <div className="dp-name">Reboco externo</div>
-              <div className="dp-badge" style={{ background: 'rgba(107,114,128,.15)', color: '#6B7280' }}>Aguardando</div>
+              <div className="dp-dot" style={{ background: '#4ade80' }}></div>
+              <div className="dp-name">Apto 405 — Ana Beatriz</div>
+              <div className="dp-badge" style={{ background: 'rgba(74,222,128,.15)', color: '#4ade80' }}>Em dia</div>
             </div>
             <div className="dp-task">
               <div className="dp-dot" style={{ background: '#3B82F6' }}></div>
-              <div className="dp-name">Acabamento interno</div>
-              <div className="dp-badge" style={{ background: 'rgba(59,130,246,.15)', color: '#3B82F6' }}>Planejado</div>
-              <div className="dp-pct">0%</div>
+              <div className="dp-name">Apto 501 — Ricardo Neves</div>
+              <div className="dp-badge" style={{ background: 'rgba(59,130,246,.15)', color: '#3B82F6' }}>Contrato</div>
+              <div className="dp-pct">Novo</div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
