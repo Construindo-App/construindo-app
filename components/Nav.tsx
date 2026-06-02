@@ -36,9 +36,9 @@ export default function Nav() {
               <Image src="/icon-logo.png" alt="Construindo" width={32} height={32} priority />
             </Link>
             <ul className="site-nav-links">
-              <li><Link href="/#funcionalidades">Funcionalidades</Link></li>
+              <li><Link href="/#por-que">Funcionalidades</Link></li>
               <li><Link href="/planos">Planos</Link></li>
-              <li><Link href="/#reviews">Reviews</Link></li>
+              <li><Link href="/#depoimentos">Reviews</Link></li>
               <li><Link href="/#download">Download</Link></li>
             </ul>
           </div>
@@ -74,9 +74,9 @@ export default function Nav() {
         aria-hidden={!menuOpen}
       >
         <ul className="site-nav-drawer-links">
-          <li><Link href="/#funcionalidades" onClick={closeMenu}>Funcionalidades</Link></li>
+          <li><Link href="/#por-que" onClick={closeMenu}>Funcionalidades</Link></li>
           <li><Link href="/planos" onClick={closeMenu}>Planos</Link></li>
-          <li><Link href="/#reviews" onClick={closeMenu}>Reviews</Link></li>
+          <li><Link href="/#depoimentos" onClick={closeMenu}>Reviews</Link></li>
           <li><Link href="/#download" onClick={closeMenu}>Download</Link></li>
         </ul>
         <Link href="https://app.construindo.com" className="site-nav-drawer-cta" onClick={closeMenu}>
