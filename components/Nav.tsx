@@ -49,7 +49,7 @@ export default function Nav() {
           </Link>
 
           {/* Desktop right: CTA */}
-          <Link href="https://app.construindo.com" className="site-nav-cta">
+          <Link href="/mobile-only" className="site-nav-cta">
             Acessar
           </Link>
 
@@ -79,7 +79,7 @@ export default function Nav() {
           <li><Link href="/#depoimentos" onClick={closeMenu}>Reviews</Link></li>
           <li><Link href="/#download" onClick={closeMenu}>Download</Link></li>
         </ul>
-        <Link href="https://app.construindo.com" className="site-nav-drawer-cta" onClick={closeMenu}>
+        <Link href="/mobile-only" className="site-nav-drawer-cta" onClick={closeMenu}>
           Acessar
         </Link>
       </div>

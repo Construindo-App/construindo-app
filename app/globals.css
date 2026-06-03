@@ -1549,6 +1549,49 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.final-cta h2,.hero-badge{
 @media(max-width:768px){
   :root{--gutter:16px}
 }
+/* ─── MOBILE ONLY PAGE ─── */
+.mobile-only-page{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:120px var(--gutter) 80px;
+  background:var(--bg);
+}
+.mobile-only-card{
+  max-width:480px;width:100%;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.mobile-only-icon{
+  width:88px;height:88px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.12);
+  margin-bottom:8px;
+}
+.mobile-only-title{
+  font-size:clamp(28px,5vw,40px);
+  color:var(--text);
+  line-height:1.1;
+}
+.mobile-only-desc{
+  font-size:16px;line-height:1.6;
+  color:var(--muted);
+  max-width:400px;
+}
+.mobile-only-sub{
+  font-size:14px;font-weight:600;
+  color:var(--text);
+  margin-top:8px;
+}
+.mobile-only-buttons{
+  display:flex;flex-direction:column;gap:12px;
+  width:100%;max-width:260px;
+  margin-top:4px;
+}
+.mobile-only-buttons .btn-store{
+  width:100%;justify-content:center;
+}
+
 @media(max-width:768px){
   .legal-nav{padding:0 20px}
   .nav-pill-group{display:none}
