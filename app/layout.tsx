@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Cardo } from 'next/font/google'
-import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -19,16 +18,6 @@ const cardo = Cardo({
   display: 'swap',
 })
 
-const bogue = localFont({
-  src: [
-    { path: '../public/fonts/bogue-regular.ttf', weight: '400', style: 'normal' },
-    { path: '../public/fonts/bogue-medium.ttf', weight: '500', style: 'normal' },
-    { path: '../public/fonts/bogue-semibold.ttf', weight: '600', style: 'normal' },
-  ],
-  variable: '--font-bogue',
-  display: 'swap',
-})
-
 export const metadata: Metadata = {
   title: 'Construindo — Gestão de Obras na Palma da Mão',
   description:
@@ -41,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${jakarta.variable} ${bogue.variable} ${cardo.variable}`}>
+    <html lang="pt-BR" className={`${jakarta.variable} ${cardo.variable}`}>
       <body>{children}<Analytics /></body>
     </html>
   )

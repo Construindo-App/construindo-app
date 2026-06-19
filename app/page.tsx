@@ -5,6 +5,9 @@ import Footer from '@/components/Footer'
 import AnimatedBudgetCard from '@/components/AnimatedBudgetCard'
 import AnimatedStats from '@/components/AnimatedStats'
 import PageAnimations from '@/components/PageAnimations'
+import AudienceSelector from '@/components/AudienceSelector'
+import ClientPortal from '@/components/ClientPortal'
+import Testimonials from '@/components/Testimonials'
 
 export default function Home() {
   return (
@@ -91,6 +94,9 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* AUDIENCE SELECTOR */}
+      <AudienceSelector />
 
       {/* WHY */}
       <section className="sec why" id="por-que">
@@ -382,184 +388,10 @@ export default function Home() {
       </section>
 
       {/* CLIENT PORTAL */}
-      <section className="sec client-feat" id="como-funciona">
-        <div className="sec-inner">
-          <div className="cf-header">
-<h2 className="sec-h2" data-anim="fade-up" data-delay="1">Transparência total<br /><span className="grad">para seus clientes</span></h2>
-            <p className="sec-sub cf-sub" data-anim="fade-up" data-delay="2">Seus clientes acompanham a obra em tempo real — sem telefonemas, sem WhatsApp. Tudo num portal dedicado, simples e seguro.</p>
-          </div>
-
-          {/* iPhone mocks */}
-          <div className="cf-phones" data-anim="fade-up" data-delay="4">
-
-            {/* iPhone 1: Diário de obra */}
-            <div className="cf-phone-col">
-              <div className="iphone-frame">
-                <div className="iphone-inner">
-                  <div className="iphone-island"></div>
-                  <div className="iphone-screen cf-snap-diary">
-                    <div className="diary-scene">
-                      <svg className="diary-svg" viewBox="0 0 430 292" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 27 131 C 60 95 85 65 110 65 C 150 65 200 135 242 145 C 285 155 340 210 362 216 C 370 240 350 258 321 258" stroke="#C8BFB0" strokeWidth="1.5" strokeDasharray="6 5" strokeLinecap="round"/>
-                      </svg>
-                      <Image src="/diary/icon-orange.png" alt="" width={46} height={46} className="dicon dicon-orange" style={{width:46,height:46}} />
-                      <Image src="/diary/photo1.png" alt="" width={197} height={183} className="dphoto dphoto-1" style={{width:120,height:'auto'}} />
-                      <Image src="/diary/photo2.png" alt="" width={197} height={183} className="dphoto dphoto-2" style={{width:120,height:'auto'}} />
-                      <Image src="/diary/photo3.png" alt="" width={197} height={183} className="dphoto dphoto-3" style={{width:120,height:'auto'}} />
-                      <Image src="/diary/icon-green.png" alt="" width={46} height={46} className="dicon dicon-green" style={{width:46,height:46}} />
-                    </div>
-                  </div>
-                  <div className="iphone-home"></div>
-                </div>
-              </div>
-              <div className="cf-phone-label">
-                <h3>Diário de obra</h3>
-                <p>Registros diários com fotos e anotações. O cliente acompanha o avanço real em tempo real.</p>
-              </div>
-            </div>
-
-            {/* iPhone 2: Gestão de pagamentos */}
-            <div className="cf-phone-col cf-phone-col--center">
-              <div className="iphone-frame">
-                <div className="iphone-inner">
-                  <div className="iphone-island"></div>
-                  <div className="iphone-screen cf-snap-pay">
-                    <div className="cfs-profile">
-                      <div className="cfs-avatar">M</div>
-                      <div>
-                        <div className="cfs-name">Marcos Antônio Frederico</div>
-                        <div className="cfs-role">Comprador</div>
-                      </div>
-                    </div>
-                    <div className="cfs-table">
-                      <div className="cfs-tr"><span>Valor total</span><span>R$300.000,00</span></div>
-                      <div className="cfs-tr"><span>Entrada</span><span>R$60.000,00</span></div>
-                      <div className="cfs-tr"><span>Sinal</span><span>R$1.271,38</span></div>
-                    </div>
-                    <div className="cfs-pay-title">Pagamentos 3/12</div>
-                    <div className="cfs-prog"><div className="cfs-prog-fill"></div></div>
-                    <div className="cfs-plist">
-                      <div className="cfs-prow">
-                        <div className="cfs-pcheck green">✓</div>
-                        <div className="cfs-pinfo"><div className="cfs-pdate">5 Out 2025</div><div className="cfs-psub">Parcela 2</div></div>
-                        <div className="cfs-pamt">R$10.000</div>
-                      </div>
-                      <div className="cfs-prow">
-                        <div className="cfs-pcheck amber">⏱</div>
-                        <div className="cfs-pinfo"><div className="cfs-pdate">5 Nov 2025</div><div className="cfs-psub">Parcela 3</div></div>
-                        <div className="cfs-pamt">R$1.271</div>
-                      </div>
-                      <div className="cfs-prow muted">
-                        <div className="cfs-pcheck grey"></div>
-                        <div className="cfs-pinfo"><div className="cfs-pdate">5 Dez 2025</div><div className="cfs-psub">Parcela 4</div></div>
-                        <div className="cfs-pamt">R$7.500</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="iphone-home"></div>
-                </div>
-              </div>
-              <div className="cf-phone-label">
-                <h3>Gestão de pagamentos</h3>
-                <p>Cronograma financeiro e boletos organizados. Histórico completo de cada parcela.</p>
-              </div>
-            </div>
-
-            {/* iPhone 3: Gestão de documentos */}
-            <div className="cf-phone-col">
-              <div className="iphone-frame">
-                <div className="iphone-inner">
-                  <div className="iphone-island"></div>
-                  <div className="iphone-screen cf-snap-docs">
-                    <div className="cfs-app-header">
-                      <span className="cfs-back">←</span>
-                      <span className="cfs-app-icon">🏠</span>
-                      <span className="cfs-app-title">Casa JF</span>
-                    </div>
-                    <div className="cfs-doc-title">Documentos da Obra</div>
-                    <div className="cfs-tabs">
-                      <div className="cfs-tab active">Compartilhados</div>
-                      <div className="cfs-tab">Outros</div>
-                    </div>
-                    <div className="cfs-drow">
-                      <div className="cfs-dicon"></div>
-                      <div className="cfs-dinfo"><div className="cfs-dname">Contrato de Compra</div><div className="cfs-ddate">Adicionado 24/08/2023</div></div>
-                      <div className="cfs-toggle off"><span /></div>
-                    </div>
-                    <div className="cfs-drow">
-                      <div className="cfs-dicon"></div>
-                      <div className="cfs-dinfo"><div className="cfs-dname">Projeto Arquitetônico</div><div className="cfs-ddate">Adicionado 24/08/2023</div></div>
-                      <div className="cfs-toggle off"><span /></div>
-                    </div>
-                    <div className="cfs-drow">
-                      <div className="cfs-dicon"></div>
-                      <div className="cfs-dinfo"><div className="cfs-dname">Matrícula da Imóvel</div><div className="cfs-ddate">Adicionado 24/08/2023</div></div>
-                      <div className="cfs-toggle on"><span /></div>
-                    </div>
-                    <div className="cfs-drow">
-                      <div className="cfs-dicon"></div>
-                      <div className="cfs-dinfo"><div className="cfs-dname">Projeto Arq. Prefeitura</div><div className="cfs-ddate">Adicionado 24/08/2023</div></div>
-                      <div className="cfs-toggle on"><span /></div>
-                    </div>
-                  </div>
-                  <div className="iphone-home"></div>
-                </div>
-              </div>
-              <div className="cf-phone-label">
-                <h3>Gestão de documentos</h3>
-                <p>Contratos, plantas e alvarás sempre disponíveis. Sem e-mail perdido, sem pasta física.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <ClientPortal />
 
       {/* TESTIMONIALS */}
-      <section className="testi-sec" id="depoimentos">
-        <div className="testi-header">
-          <div>
-            <div className="eyebrow" data-anim="fade-up">Depoimentos</div>
-            <h2 className="sec-h2" data-anim="fade-up" data-delay="1">Quem usa,<br /><span className="grad">não volta atrás</span></h2>
-          </div>
-          <p data-anim="fade-up" data-delay="2" style={{ fontSize: '16px', color: 'var(--muted)', maxWidth: '340px', lineHeight: '1.6' }}>Construtoras de todo o Brasil entregando obras no prazo e no orçamento.</p>
-        </div>
-        <div className="testi-grid">
-          <div className="testi-card" data-anim="scale-up" data-delay="1">
-            <div className="testi-stars">★★★★★</div>
-            <p className="testi-quote">&ldquo;Antes usávamos planilhas e e-mail para tudo. Hoje qualquer sócio acessa o andamento de qualquer obra pelo celular. A visibilidade é impressionante.&rdquo;</p>
-            <div className="testi-author">
-              <div className="testi-av" style={{ background: 'var(--orange)' }}>C</div>
-              <div>
-                <div className="testi-name">Carlos Mendonça</div>
-                <div className="testi-role">Diretor, Construtora Mendonça</div>
-              </div>
-            </div>
-          </div>
-          <div className="testi-card" data-anim="scale-up" data-delay="2">
-            <div className="testi-stars">★★★★★</div>
-            <p className="testi-quote">&ldquo;Reduzimos desvios de orçamento em 28% no primeiro trimestre. O alerta de desvio em tempo real mudou nossa forma de gerir contratos para sempre.&rdquo;</p>
-            <div className="testi-author">
-              <div className="testi-av" style={{ background: '#10B981' }}>A</div>
-              <div>
-                <div className="testi-name">Ana Lima</div>
-                <div className="testi-role">Engenheira de Custos, Tenda</div>
-              </div>
-            </div>
-          </div>
-          <div className="testi-card" data-anim="scale-up" data-delay="3">
-            <div className="testi-stars">★★★★★</div>
-            <p className="testi-quote">&ldquo;O diário de obra digital resolveu brigas históricas sobre o que foi ou não executado. Foto, data e responsável registrados para cada evento da obra.&rdquo;</p>
-            <div className="testi-author">
-              <div className="testi-av" style={{ background: '#8B5CF6' }}>M</div>
-              <div>
-                <div className="testi-name">Marcelo Ramos</div>
-                <div className="testi-role">Engenheiro de Campo, EZTec</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* FINAL CTA */}
       <section className="final-cta" id="download">
