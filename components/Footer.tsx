@@ -5,7 +5,7 @@ interface FooterProps {
 }
 
 export default function Footer({ variant = 'main' }: FooterProps) {
-  const bg = variant === 'main' ? '#0A0A0A' : '#111827'
+  const bg = variant === 'main' ? '#222222' : '#111827'
 
   return (
     <footer className="site-footer" style={{ background: bg }}>

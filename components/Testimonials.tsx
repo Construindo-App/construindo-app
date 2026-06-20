@@ -1,3 +1,5 @@
+import AnimatedStats from '@/components/AnimatedStats'
+
 type Card =
   | { type: 'quote'; quote: string; name: string; role: string; avatar: string }
   | { type: 'video'; poster: string; name: string; role: string }
@@ -137,9 +139,11 @@ export default function Testimonials() {
   return (
     <section className="testi-sec" id="depoimentos">
       <div className="tm-header" data-anim="fade-up">
-        <div className="eyebrow">Depoimentos</div>
-        <h2 className="sec-h2">Quem usa,<br /><span className="grad">não volta atrás</span></h2>
-        <p className="sec-sub tm-sub">Construtoras, corretores e empreiteiros de todo o Brasil entregando obras no prazo e no orçamento.</p>
+        <h2 className="sec-h2">Quem usa, não volta atrás</h2>
+      </div>
+
+      <div className="tm-stats">
+        <AnimatedStats />
       </div>
 
       <div className="tm-marquee">

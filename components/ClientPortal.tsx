@@ -132,7 +132,7 @@ export default function ClientPortal() {
     <section className="sec client-feat" id="como-funciona">
       <div className="sec-inner">
         <div className="cf-header" data-anim="fade-up">
-          <h2 className="sec-h2">Transparência total<br /><span className="grad">para seus clientes</span></h2>
+          <h2 className="sec-h2">Transparência total para seus clientes</h2>
           <p className="sec-sub cf-sub">Seus clientes acompanham a obra em tempo real — sem telefonemas, sem WhatsApp. Tudo num portal dedicado, simples e seguro.</p>
         </div>
 

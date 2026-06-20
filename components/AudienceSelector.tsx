@@ -34,8 +34,7 @@ export default function AudienceSelector() {
       <div className="sec-inner">
         <div className="aud-header" data-anim="fade-up">
           <h2 className="aud-h2">
-            Facilite o dia a dia<br />
-            do seu negócio
+            Facilite o dia a dia do seu negócio
           </h2>
           <p className="aud-lead">
             Não importa o seu papel na obra — o Construindo organiza o seu dia a dia e mantém todo mundo na mesma página, em tempo real.
