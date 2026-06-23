@@ -10,3 +10,6 @@ out/
 *.pem
 .env
 .env*.local
+
+# Claude Code local worktrees
+.claude/worktrees/
