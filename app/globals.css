@@ -857,7 +857,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   background:
     radial-gradient(120% 80% at 80% 0%,rgba(255,255,255,.30),transparent 60%),
     linear-gradient(155deg,#F1E2D2 0%,#E2BE9D 60%,#D2A179 100%);
-  padding:0;justify-content:center;align-items:stretch;gap:0;
+  padding:20px 0;justify-content:center;align-items:stretch;gap:0;
   isolation:isolate;
 }
 .cf-stage--diario::after,
@@ -874,8 +874,8 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .cf-stage--pagamentos .cf-prop,
 .cf-stage--pagamentos .cf-card{width:calc(100% - 80px);flex-shrink:0}
 .cf-stage--documentos{isolation:isolate;background:
-  radial-gradient(120% 80% at 80% 0%,rgba(255,255,255,.34),transparent 60%),
-  linear-gradient(155deg,#DEE4D1 0%,#B3C098 60%,#9DAE80 100%)}
+  radial-gradient(120% 80% at 80% 0%,rgba(255,255,255,.32),transparent 60%),
+  linear-gradient(155deg,#EFDBC9 0%,#DCA886 60%,#CE9468 100%)}
 /* whole-snapshot zoom-in (stage stays opaque -> no flash); content fades in below.
    Replays on each feature switch (remount via key). */
 .cf-stage-anim{animation:cfStageIn .6s cubic-bezier(.22,1,.36,1) both}
@@ -936,9 +936,9 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .cf-prop-name{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.3px;line-height:1.2}
 .cf-prop-addr{display:flex;align-items:center;gap:6px;font-size:12.5px;color:rgba(255,255,255,.82)}
 .cf-prop-addr svg{flex:0 0 auto;color:var(--orange)}
-.cf-prop-stats{display:flex;gap:8px;flex-wrap:wrap}
+.cf-prop-stats{display:flex;gap:8px;flex-wrap:nowrap}
 .cf-prop-stat{
-  display:inline-flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap;
   font-size:12px;font-weight:600;color:#fff;
   background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);
   border-radius:9px;padding:6px 11px;backdrop-filter:blur(6px);
@@ -957,8 +957,36 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 
 /* diário — reel estilo stories: foto full-bleed, timeline no topo, legenda sobre gradiente */
 .cf-reel{
-  position:relative;flex:1 1 auto;width:100%;height:100%;align-self:stretch;
-  overflow:hidden;border-radius:16px;isolation:isolate;
+  display:flex;flex-direction:column;gap:14px;
+  flex:1 1 auto;width:100%;height:100%;align-self:stretch;
+  isolation:isolate;min-height:0;
+}
+/* cabeçalho acima do card: timeline (steps) + perfil */
+.cf-reel-bar{
+  flex:0 0 auto;padding:0 18px;
+  display:flex;flex-direction:column;gap:11px;
+}
+/* timeline / barras de progresso (steps) */
+.cf-reel-timeline{display:flex;gap:5px}
+.cf-reel-seg{flex:1;height:3px;border-radius:3px;background:rgba(30,20,10,.14);overflow:hidden}
+.cf-reel-seg-fill{display:block;height:100%;width:0;background:var(--text);border-radius:3px}
+.cf-reel-seg-fill.is-done{width:100%}
+.cf-reel-seg-fill.is-active{width:0;animation:cfReelSeg linear forwards}
+@keyframes cfReelSeg{from{width:0}to{width:100%}}
+/* cabeçalho estilo perfil */
+.cf-reel-head{display:flex;align-items:center;gap:11px}
+.cf-reel-avatar{
+  flex:0 0 auto;width:36px;height:36px;border-radius:50%;overflow:hidden;
+  box-shadow:0 4px 12px rgba(70,45,20,.22);
+}
+.cf-reel-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.cf-reel-id{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.cf-reel-name{font-size:14px;font-weight:700;color:var(--text)}
+.cf-reel-loc{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* área do carrossel — clipa os cards que sangram nas bordas */
+.cf-reel-stage{
+  position:relative;flex:1 1 auto;min-height:0;
+  overflow:hidden;border-radius:0;
 }
 /* coverflow infinito: trilho desliza sempre para a frente */
 .cf-reel-track{
@@ -969,10 +997,9 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .cf-reel-track.no-anim .cf-reel-item{transition:none}
 .cf-reel-item{
   position:relative;flex:0 0 62%;height:100%;margin:0 1%;
-  border-radius:20px;overflow:hidden;
+  border-radius:18px;overflow:hidden;
   opacity:.5;
   transition:opacity .8s ease;
-  box-shadow:0 22px 48px rgba(0,0,0,.34);
 }
 .cf-reel-item.is-active{opacity:1}
 .cf-reel-item img{display:block}
@@ -982,63 +1009,22 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   background:linear-gradient(to top,
     rgba(8,6,4,1) 0%,rgba(8,6,4,.85) 16%,rgba(8,6,4,.42) 42%,rgba(8,6,4,0) 70%);
 }
-/* timeline / barras de progresso no topo */
-.cf-reel-timeline{
-  position:absolute;top:14px;left:16px;right:16px;z-index:5;
-  display:flex;gap:5px;
-}
-.cf-reel-seg{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden}
-.cf-reel-seg-fill{display:block;height:100%;width:0;background:#fff;border-radius:3px}
-.cf-reel-seg-fill.is-done{width:100%}
-.cf-reel-seg-fill.is-active{width:0;animation:cfReelSeg linear forwards}
-@keyframes cfReelSeg{from{width:0}to{width:100%}}
-/* cabeçalho estilo perfil */
-.cf-reel-head{
-  position:absolute;top:30px;left:16px;right:16px;z-index:5;
-  display:flex;align-items:center;gap:11px;
-}
-.cf-reel-avatar{
-  flex:0 0 auto;width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;color:#fff;
-  background:linear-gradient(135deg,var(--orange),#f0a35e);
-  border:2px solid rgba(255,255,255,.9);
-  box-shadow:0 4px 12px rgba(0,0,0,.3);
-}
-.cf-reel-id{display:flex;flex-direction:column;line-height:1.25;min-width:0}
-.cf-reel-name{font-size:13.5px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-.cf-reel-loc{font-size:11px;color:rgba(255,255,255,.82);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-.cf-reel-live{
-  margin-left:auto;flex:0 0 auto;
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff;
-  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
-  padding:5px 10px;border-radius:100px;backdrop-filter:blur(6px);
-}
-.cf-reel-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#ff5a52;box-shadow:0 0 0 0 rgba(255,90,82,.7);animation:cfReelPulse 1.6s ease-out infinite}
-@keyframes cfReelPulse{0%{box-shadow:0 0 0 0 rgba(255,90,82,.6)}70%{box-shadow:0 0 0 7px rgba(255,90,82,0)}100%{box-shadow:0 0 0 0 rgba(255,90,82,0)}}
 /* legenda dentro de cada card */
 .cf-reel-cap{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 24px 26px;
+  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 8px 22px;
 }
 .cf-reel-date{
   display:inline-block;font-size:12px;font-weight:600;letter-spacing:.3px;
   color:rgba(255,255,255,.86);margin-bottom:9px;
 }
-.cf-reel-text{font-size:18px;font-weight:600;line-height:1.42;color:#fff;letter-spacing:-.2px;text-shadow:0 2px 14px rgba(0,0,0,.45);max-width:92%}
+.cf-reel-text{font-size:12px;font-weight:600;line-height:1.42;color:#fff;letter-spacing:-.2px;text-shadow:0 2px 14px rgba(0,0,0,.45);max-width:100%}
 
 /* documentos — pasta com papéis saindo */
-.cf-folder{position:relative;width:300px;height:330px;margin:0 auto}
-/* back panel + folder tab (brand orange) */
-.cf-folder-back{
-  position:absolute;left:26px;bottom:26px;width:248px;height:182px;z-index:0;
-  background:linear-gradient(180deg,#E2723F 0%,#C85528 100%);
-  border-radius:4px 16px 16px 16px;
-  box-shadow:0 10px 22px rgba(120,50,15,.16);
-}
-.cf-folder-back::before{
-  content:'';position:absolute;top:-16px;left:0;width:124px;height:20px;
-  background:linear-gradient(180deg,#E8784A,#E2723F);border-radius:9px 14px 0 0;
-}
+.cf-folder{position:relative;width:300px;height:320px;margin:0 auto}
+/* pasta aberta em SVG (formato da ilustração) */
+.cf-folder-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cf-folder-svg--front{z-index:3}
+.cf-folder-front-shape{fill:#FBC417}
 /* document file cards */
 .cf-doc{
   position:absolute;left:50%;bottom:86px;width:138px;height:174px;margin-left:-69px;z-index:1;
@@ -1058,17 +1044,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .cf-doc-lines{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:auto}
 .cf-doc-lines i{height:4px;border-radius:2px;background:#ECEAE5;display:block}
 .cf-doc-lines i.short{width:52%}
-/* front pocket */
-.cf-folder-front{
-  position:absolute;left:22px;bottom:26px;width:256px;height:118px;z-index:2;
-  background:linear-gradient(180deg,#F2814E 0%,#DE6333 100%);
-  border-radius:12px 12px 14px 14px;
-  box-shadow:0 18px 34px rgba(150,70,25,.30);
-}
-.cf-folder-front::after{
-  content:'';position:absolute;inset:0;border-radius:12px 12px 14px 14px;
-  background:linear-gradient(180deg,rgba(255,255,255,.30),transparent 40%);
-}
+/* arquivo de imagem (JPG) — miniatura da planta no lugar das linhas */
+.cf-doc--img{z-index:2}
+.cf-doc-thumb{flex:1;width:100%;margin-top:2px;border-radius:5px;overflow:hidden;background:#EEF1F4}
+.cf-doc-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 /* fan the three files out: PDF left, JPG center peak, DOC right */
 @keyframes cfDoc1{0%{opacity:0;transform:translate(-44px,40px) rotate(-19deg)}100%{opacity:1;transform:translate(-86px,-30px) rotate(-19deg)}}
 @keyframes cfDoc2{0%{opacity:0;transform:translate(44px,40px) rotate(18deg)}100%{opacity:1;transform:translate(82px,-38px) rotate(18deg)}}
@@ -1497,19 +1476,21 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .dl-cta-p{font-size:17px;color:var(--muted);margin-bottom:40px;line-height:1.65}
 .dl-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .dl-cta-devices{
-  position:relative;z-index:1;
-  height:360px;flex-shrink:0;
+  position:relative;z-index:1;flex-shrink:0;
+  display:flex;justify-content:center;align-items:flex-end;
 }
-.dl-cta-desktop{
-  position:absolute;left:4%;bottom:0;
-  width:80%;border-radius:12px 12px 0 0;
-  box-shadow:0 -8px 48px rgba(0,0,0,.28);
+/* moldura fina ao redor do print do app, estilo bezel de celular */
+.dl-cta-phone-frame{
+  padding:8px 8px 0;
+  background:rgba(20,16,12,.08);
+  border-radius:46px 46px 0 0;
+  box-shadow:0 12px 36px rgba(40,30,15,.22);
+  line-height:0;
 }
 .dl-cta-phone{
-  position:absolute;right:5%;bottom:0;
-  width:19%;max-width:220px;
-  border-radius:28px 28px 0 0;
-  box-shadow:0 -8px 40px rgba(0,0,0,.22);
+  display:block;
+  width:280px;max-width:74vw;
+  border-radius:38px 38px 0 0;
 }
 
 /* ─── FOOTER ─── */
@@ -1933,8 +1914,13 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   .why-pin-visual{
     order:1;width:100%;height:46vh;min-height:300px;max-height:420px;
     overflow:hidden;border-radius:24px;align-items:flex-start;
+    margin-top:36px;
   }
-  .why-pin-phone{max-width:215px;transform:translateY(20%);margin:0}
+  .why-pin-phone{
+    max-width:215px;margin:0;
+    left:50%;right:auto;top:32px;bottom:auto;
+    transform:translateX(-50%);
+  }
   .why-pin-slides{order:2;width:100%;min-height:150px;margin-top:32px}
   .why-pin-slide p{margin-left:auto;margin-right:auto;font-size:clamp(17px,4.4vw,21px)}
   .why-pin-dots{order:3;width:100%;justify-content:center;margin-top:24px}
@@ -1943,16 +1929,16 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   .cf-phones{flex-direction:column;align-items:center;gap:40px}
   .cf-phone-col--center .iphone-frame{transform:none}
   .cf-phone-col{max-width:300px;width:100%}
-  .cf-layout{grid-template-columns:1fr;gap:40px}
-  .cf-visual{order:-1}
+  .cf-layout{grid-template-columns:minmax(0,1fr);gap:40px}
+  .cf-visual{order:-1;min-width:0}
+  .cf-stage--pagamentos .cf-prop,
+  .cf-stage--pagamentos .cf-card{width:100%}
   .cf-item{padding:18px 18px}
   .testi-sec{padding:72px 0}
   .testi-grid{grid-template-columns:1fr}
   .dl-cta{padding:48px 0}
   .dl-cta-top{padding:56px 24px 40px}
-  .dl-cta-devices{height:220px}
-  .dl-cta-desktop{width:90%;left:2%}
-  .dl-cta-phone{display:none}
+  .dl-cta-phone{width:230px}
   .site-footer{padding:56px 0 28px}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px}
   /* Mobile nav */
@@ -2000,6 +1986,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 }
 @media(max-width:768px){
   :root{--gutter:16px}
+  .cf-stage{height:320px}
+  /* desce a pasta para caber todos os arquivos no quadro
+     (!important para vencer o transform final da animação de entrada) */
+  .cf-folder{transform:translateY(58px)!important}
 }
 /* ─── MOBILE ONLY PAGE ─── */
 .mobile-only-page{

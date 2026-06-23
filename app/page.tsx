@@ -137,8 +137,9 @@ export default function Home() {
               </div>
             </div>
             <div className="dl-cta-devices">
-              <img className="dl-cta-desktop" src="/dl-desktop.webp" alt="Construindo no desktop" />
-              <img className="dl-cta-phone" src="/dl-phone.webp" alt="Construindo no celular" />
+              <div className="dl-cta-phone-frame">
+                <img className="dl-cta-phone" src="/dl-phone.webp" alt="Construindo no celular" />
+              </div>
             </div>
           </div>
         </div>

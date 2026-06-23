@@ -66,42 +66,45 @@ function DiaryReel() {
 
   return (
     <div className="cf-reel">
-      <div
-        className={`cf-reel-track${anim ? '' : ' no-anim'}`}
-        style={{ transform: `translateX(calc(18% - ${idx * 64}%))` }}
-      >
-        {REEL_LOOP.map((p, j) => (
-          <div key={j} className={`cf-reel-item${j === idx ? ' is-active' : ''}`}>
-            <Image src={p.img} alt="" fill sizes="440px" style={{ objectFit: 'cover' }} />
-            <div className="cf-reel-cap">
-              <div className="cf-reel-date">{p.date}</div>
-              <p className="cf-reel-text">{p.text}</p>
+      <div className="cf-reel-bar">
+        <div className="cf-reel-timeline">
+          {DIARY_POSTS.map((_, i) => (
+            <div className="cf-reel-seg" key={i}>
+              <span
+                className={`cf-reel-seg-fill${i < real ? ' is-done' : ''}${i === real ? ' is-active' : ''}`}
+                style={i === real ? { animationDuration: `${REEL_DURATION}ms` } : undefined}
+                key={i === real ? `a-${idx}` : i}
+              />
             </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="cf-reel-timeline">
-        {DIARY_POSTS.map((_, i) => (
-          <div className="cf-reel-seg" key={i}>
-            <span
-              className={`cf-reel-seg-fill${i < real ? ' is-done' : ''}${i === real ? ' is-active' : ''}`}
-              style={i === real ? { animationDuration: `${REEL_DURATION}ms` } : undefined}
-              key={i === real ? `a-${idx}` : i}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="cf-reel-head">
-        <span className="cf-reel-avatar" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" width="15" height="15"><path d="M14.5 4h-5L8 6H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-4z" /><circle cx="12" cy="12.5" r="3.2" /></svg>
-        </span>
-        <div className="cf-reel-id">
-          <span className="cf-reel-name">Diário de obra</span>
-          <span className="cf-reel-loc">Residência Jardim das Acácias</span>
+          ))}
         </div>
-        <span className="cf-reel-live">Ao vivo</span>
+
+        <div className="cf-reel-head">
+          <span className="cf-reel-avatar" aria-hidden="true">
+            <Image src="/img-fachada.jpg" alt="" width={36} height={36} />
+          </span>
+          <div className="cf-reel-id">
+            <span className="cf-reel-name">Diário de obra</span>
+            <span className="cf-reel-loc">Residência Jardim das Acácias</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="cf-reel-stage">
+        <div
+          className={`cf-reel-track${anim ? '' : ' no-anim'}`}
+          style={{ transform: `translateX(calc(18% - ${idx * 64}%))` }}
+        >
+          {REEL_LOOP.map((p, j) => (
+            <div key={j} className={`cf-reel-item${j === idx ? ' is-active' : ''}`}>
+              <Image src={p.img} alt="" fill sizes="440px" style={{ objectFit: 'cover' }} />
+              <div className="cf-reel-cap">
+                <div className="cf-reel-date">{p.date}</div>
+                <p className="cf-reel-text">{p.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -184,12 +187,6 @@ function renderStage(i: number) {
   return (
     <div className="cf-stage cf-stage--documentos cf-stage-anim" key={i}>
       <div className="cf-folder">
-        <div className="cf-folder-back" />
-        <div className="cf-doc cf-doc--3">
-          <span className="cf-doc-badge cf-doc-badge--jpg">JPG</span>
-          <span className="cf-doc-name">Planta Baixa</span>
-          <span className="cf-doc-lines"><i /><i /><i className="short" /></span>
-        </div>
         <div className="cf-doc cf-doc--1">
           <span className="cf-doc-badge cf-doc-badge--pdf">PDF</span>
           <span className="cf-doc-name">Contrato de Venda</span>
@@ -200,7 +197,16 @@ function renderStage(i: number) {
           <span className="cf-doc-name">Manual do Proprietário</span>
           <span className="cf-doc-lines"><i /><i /><i className="short" /></span>
         </div>
-        <div className="cf-folder-front" />
+        <div className="cf-doc cf-doc--3 cf-doc--img">
+          <span className="cf-doc-badge cf-doc-badge--jpg">JPG</span>
+          <span className="cf-doc-name">Planta Baixa</span>
+          <div className="cf-doc-thumb">
+            <Image src="/img-planta.jpg" alt="Planta baixa" width={138} height={120} />
+          </div>
+        </div>
+        <svg className="cf-folder-svg cf-folder-svg--front" viewBox="0 0 300 320" fill="none" aria-hidden="true">
+          <path className="cf-folder-front-shape" d="M34 182 a16 16 0 0 1 16 -16 h76 l16 -15 h96 a16 16 0 0 1 15.6 20 l-18 80 a16 16 0 0 1 -15.6 12 h-154 a16 16 0 0 1 -16 -16 z" />
+        </svg>
       </div>
     </div>
   )
