@@ -39,7 +39,7 @@ function StatItem({ stat, active, delay }: { stat: typeof stats[0]; active: bool
       style={{ animationDelay: `${delay}ms` } as React.CSSProperties}
     >
       <div className="stat-num">
-        {stat.prefix}{display}{stat.suffix}
+        {stat.prefix}{display}{stat.suffix === '★' ? <span className="stat-star">{stat.suffix}</span> : stat.suffix}
       </div>
       <div className="stat-label">{stat.label}</div>
     </div>

@@ -791,6 +791,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .stats-inner{position:relative;z-index:1;max-width:var(--container-w);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;transition:opacity .3s}
 .stat-num{font-size:clamp(32px,4vw,52px);font-weight:600;color:var(--text);letter-spacing:-2px;line-height:1}
 .stat-label{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.4}
+.stat-star{font-size:.5em;vertical-align:middle;line-height:1}
 .tm-stats{padding:48px 0}
 
 /* ─── CLIENT PORTAL ─── */
@@ -1442,8 +1443,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 
 @media(max-width:760px){
   .tm-col{height:440px}
-  .tm-quote-card{padding:26px 24px}
-  .tm-quote{font-size:14px}
+  .tm-quote-card{padding:20px 20px}
+  .tm-quote{font-size:14px;margin-bottom:12px}
+  .tm-qmark{font-size:48px;height:22px;margin-bottom:10px}
+  .tm-qfoot{margin-top:0}
 }
 
 /* ─── DOWNLOAD CTA ─── */
@@ -1904,8 +1907,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   :root{--gutter:32px}
   .main-nav{padding:0 24px}
   .nav-links{display:none}
-  .sec{padding:72px 0}
+  .sec{padding:40px 0}
+  .aud-header{margin-bottom:32px}
   .why-pin-track{height:300vh}
+  .why-pin-stage{top:52px;height:calc(100vh - 52px);padding-top:32px}
   .why-pin-inner{grid-template-columns:1fr;gap:0;text-align:center}
   /* flatten the wrapper so title / mock / text reorder as independent rows */
   .why-pin-text{display:contents}
@@ -1935,6 +1940,8 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   .cf-stage--pagamentos .cf-card{width:100%}
   .cf-item{padding:18px 18px}
   .testi-sec{padding:72px 0}
+  .tm-stats{padding-bottom:0}
+  .tm-marquee{margin-top:48px}
   .testi-grid{grid-template-columns:1fr}
   .dl-cta{padding:48px 0}
   .dl-cta-top{padding:56px 24px 40px}
@@ -1960,7 +1967,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   }
   .hero-sub{max-width:100%}
   .hero-actions{justify-content:center}
-  .hero-right{width:100%;min-width:unset;height:430px;overflow:visible}
+  .hero-right{width:100%;min-width:unset;height:430px;overflow:visible;margin-bottom:32px}
   .hero-right-clip{border-radius:0}
   .hero-card{left:var(--gutter);right:var(--gutter);top:0;bottom:0;border-radius:24px}
   .hero-mockup-img{
