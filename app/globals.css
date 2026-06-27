@@ -1769,11 +1769,11 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 /* ─── PLANS PAGE ─── */
 .plans-hero{
   background:var(--bg);
-  padding:140px var(--gutter) 80px;
+  padding:140px 0 80px;
   text-align:center;
   border-bottom:1px solid var(--border);
 }
-.plans-hero-inner{max-width:640px;margin:0 auto;margin-bottom:56px}
+.plans-hero-inner{max-width:640px;margin:0 auto;margin-bottom:56px;padding:0 var(--gutter)}
 .plans-h1{
   font-size:clamp(36px,4.5vw,60px);
   font-weight:700;letter-spacing:-1.5px;line-height:1.05;
@@ -1994,6 +1994,9 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 @media(max-width:768px){
   :root{--gutter:16px}
   .cf-stage{height:320px}
+  /* Empilha os planos no mobile (antes 3 colunas cortavam os cards) */
+  .plans-cards-inner{grid-template-columns:1fr;gap:32px}
+  .plan-card--featured{transform:none}
   /* desce a pasta para caber todos os arquivos no quadro
      (!important para vencer o transform final da animação de entrada) */
   .cf-folder{transform:translateY(58px)!important}
