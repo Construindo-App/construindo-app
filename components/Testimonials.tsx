@@ -32,13 +32,13 @@ const COLUMNS: Column[] = [
   {
     w: 300,
     cards: [
-      { type: 'video', poster: '/aud-empreiteiros.jpg', name: 'Rafael Torres', role: 'Empreiteiro' },
+      { type: 'video', poster: '/tm-video-empreiteiro.jpg', name: 'Rafael Torres', role: 'Empreiteiro' },
     ],
   },
   {
     w: 330,
     cards: [
-      { type: 'image', src: '/aud-construtores.jpg' },
+      { type: 'image', src: '/tm-obra-aerea.jpg' },
       { type: 'rating', value: '4,9', label: 'Avaliação média dos usuários' },
     ],
   },
@@ -57,7 +57,7 @@ const COLUMNS: Column[] = [
   {
     w: 300,
     cards: [
-      { type: 'video', poster: '/aud-corretores.jpg', name: 'Juliana Alves', role: 'Corretora de Imóveis' },
+      { type: 'video', poster: '/tm-video-corretora.jpg', name: 'Juliana Alves', role: 'Corretora de Imóveis' },
     ],
   },
   {
@@ -82,7 +82,7 @@ const COLUMNS: Column[] = [
   {
     w: 330,
     cards: [
-      { type: 'textimage', src: '/img-bg-feat1.jpg', text: 'Junte-se a milhares de obras geridas pelo Construindo.' },
+      { type: 'textimage', src: '/tm-join-obra.jpg', text: 'Junte-se a milhares de obras geridas pelo Construindo.' },
     ],
   },
 ]

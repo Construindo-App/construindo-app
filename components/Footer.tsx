@@ -9,9 +9,9 @@ export default function Footer({ variant = 'main' }: FooterProps) {
 
   return (
     <footer className="site-footer" style={{ background: bg }}>
-      <div className="footer-top">
+      <div className={variant === 'main' ? 'footer-top footer-top-3' : 'footer-top'}>
         <div className="footer-brand">
-          <div className="footer-logo-text">Construindo</div>
+          <img src="/favicon.svg" alt="Construindo" className="footer-logo-icon" width={48} height={48} />
           {variant === 'main' ? (
             <p>Gestão de obras simples, transparente e acessível para construtoras de todo o Brasil.</p>
           ) : (
@@ -24,27 +24,17 @@ export default function Footer({ variant = 'main' }: FooterProps) {
             <Link href="#" className="soc">yt</Link>
           </div>
         </div>
-        <div className="footer-col">
-          <h4>{variant === 'main' ? 'Produto' : 'Menu'}</h4>
-          <ul>
-            {variant === 'main' ? (
-              <>
-                <li><Link href="#">Cronograma</Link></li>
-                <li><Link href="#">Orçamentos</Link></li>
-                <li><Link href="#">Diário de Obra</Link></li>
-                <li><Link href="#">Equipes</Link></li>
-                <li><Link href="#">Relatórios</Link></li>
-              </>
-            ) : (
-              <>
-                <li><Link href="/">Início</Link></li>
-                <li><Link href="/#sobre">Sobre</Link></li>
-                <li><Link href="/#por-que">Recursos</Link></li>
-                <li><Link href="/#depoimentos">Contato</Link></li>
-              </>
-            )}
-          </ul>
-        </div>
+        {variant === 'legal' && (
+          <div className="footer-col">
+            <h4>Menu</h4>
+            <ul>
+              <li><Link href="/">Início</Link></li>
+              <li><Link href="/#sobre">Sobre</Link></li>
+              <li><Link href="/#por-que">Recursos</Link></li>
+              <li><Link href="/#depoimentos">Contato</Link></li>
+            </ul>
+          </div>
+        )}
         <div className="footer-col">
           <h4>{variant === 'main' ? 'Empresa' : 'Recursos'}</h4>
           <ul>

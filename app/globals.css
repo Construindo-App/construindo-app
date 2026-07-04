@@ -1446,7 +1446,6 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   .tm-quote-card{padding:20px 20px}
   .tm-quote{font-size:14px;margin-bottom:12px}
   .tm-qmark{font-size:48px;height:22px;margin-bottom:10px}
-  .tm-qfoot{margin-top:0}
 }
 
 /* ─── DOWNLOAD CTA ─── */
@@ -1499,11 +1498,12 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 /* ─── FOOTER ─── */
 .site-footer{background:#222222;padding:72px 0 36px;border-top:1px solid rgba(255,255,255,.05)}
 .footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px;max-width:var(--container-w);margin-left:auto;margin-right:auto;padding:0 var(--gutter)}
-.footer-logo-text{
-  font-family:var(--font-cardo),sans-serif;
-  font-size:22px;font-weight:600;color:#fff;margin-bottom:14px;
+.footer-top-3{grid-template-columns:2.5fr 1fr 1fr}
+.footer-logo-icon{
+  width:48px;height:48px;margin-bottom:14px;
+  filter:brightness(0) invert(1);
 }
-.footer-brand p{font-size:14px;color:rgba(255,255,255,.3);line-height:1.7;max-width:260px}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.7;max-width:260px}
 .footer-socials{display:flex;gap:10px;margin-top:22px}
 .soc{
   width:36px;height:36px;border-radius:10px;
@@ -1513,12 +1513,12 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   transition:background .2s,color .2s;
 }
 .soc:hover{background:rgba(255,255,255,.12);color:#fff}
-.footer-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:18px;letter-spacing:.5px;text-transform:uppercase}
+.footer-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:18px;letter-spacing:.5px;text-transform:uppercase}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-.footer-col ul li a{font-size:14px;color:rgba(255,255,255,.35);transition:color .2s}
+.footer-col ul li a{font-size:14px;color:rgba(255,255,255,.7);transition:color .2s}
 .footer-col ul li a:hover{color:#fff}
 .footer-bottom{max-width:var(--container-w);margin:0 auto;padding:28px var(--gutter) 0;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-bottom p{font-size:13px;color:rgba(255,255,255,.2)}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,.7)}
 
 /* ─── LEGAL PAGES ─── */
 .page-header{
