@@ -49,9 +49,9 @@ export default function Nav() {
           </Link>
 
           {/* Desktop right: CTA */}
-          <Link href="/mobile-only" className="site-nav-cta">
+          <a href="https://conta.construindo.app" className="site-nav-cta">
             Acessar
-          </Link>
+          </a>
 
           {/* Mobile right: hamburger */}
           <button
@@ -79,9 +79,9 @@ export default function Nav() {
           <li><Link href="/#depoimentos" onClick={closeMenu}>Reviews</Link></li>
           <li><Link href="/#download" onClick={closeMenu}>Download</Link></li>
         </ul>
-        <Link href="/mobile-only" className="site-nav-drawer-cta" onClick={closeMenu}>
+        <a href="https://conta.construindo.app" className="site-nav-drawer-cta" onClick={closeMenu}>
           Acessar
-        </Link>
+        </a>
       </div>
 
       {menuOpen && <div className="site-nav-backdrop" onClick={closeMenu} />}

@@ -517,6 +517,13 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 }
 .why-pin-phone .iphone-inner{border-radius:38px !important}
 .why-pin-phone .iphone-inner::after{border-radius:38px !important}
+/* mesma moldura do download CTA: branco translúcido em vez do shell titânio */
+.iphone-frame.why-pin-phone{
+  background:rgba(255,255,255,.1);
+  box-shadow:0 12px 36px rgba(40,30,15,.22);
+}
+.iphone-frame.why-pin-phone::before,
+.iphone-frame.why-pin-phone::after{display:none}
 .why-pin-screens{position:relative;height:460px}
 .iphone-screen.why-pin-screen{
   position:absolute;inset:0;
@@ -1457,7 +1464,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 }
 .dl-cta-bg{
   position:absolute;inset:0;
-  background:#F5F4ED;
+  background:#6C9BD2 url('/dl-cta-bg.jpg') center/cover no-repeat;
 }
 .dl-cta-top{
   position:relative;z-index:1;
@@ -1472,10 +1479,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   line-height:0;
 }
 .dl-cta-h2{
-  font-size:clamp(32px,4.5vw,56px);font-weight:600;color:var(--text);
+  font-size:clamp(32px,4.5vw,56px);font-weight:600;color:#fff;
   letter-spacing:-1.5px;line-height:1.06;margin-bottom:20px;
 }
-.dl-cta-p{font-size:17px;color:var(--muted);margin-bottom:40px;line-height:1.65}
+.dl-cta-p{font-size:17px;color:rgba(255,255,255,.92);margin-bottom:40px;line-height:1.65}
 .dl-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .dl-cta-devices{
   position:relative;z-index:1;flex-shrink:0;
@@ -1484,7 +1491,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 /* moldura fina ao redor do print do app, estilo bezel de celular */
 .dl-cta-phone-frame{
   padding:8px 8px 0;
-  background:rgba(20,16,12,.08);
+  background:rgba(255,255,255,.1);
   border-radius:46px 46px 0 0;
   box-shadow:0 12px 36px rgba(40,30,15,.22);
   line-height:0;
