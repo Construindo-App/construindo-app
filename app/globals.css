@@ -1776,11 +1776,11 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 /* ─── PLANS PAGE ─── */
 .plans-hero{
   background:var(--bg);
-  padding:140px 0 80px;
+  padding:100px 0 80px;
   text-align:center;
   border-bottom:1px solid var(--border);
 }
-.plans-hero-inner{max-width:640px;margin:0 auto;margin-bottom:56px;padding:0 var(--gutter)}
+.plans-hero-inner{max-width:760px;margin:0 auto;margin-bottom:56px;padding:0 var(--gutter)}
 .plans-h1{
   font-size:clamp(36px,4.5vw,60px);
   font-weight:700;letter-spacing:-1.5px;line-height:1.05;
@@ -1908,6 +1908,12 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .plan-check{color:#16a34a;font-weight:700;font-size:16px}
 .plan-cross{color:#DC2626;font-weight:700;font-size:14px;opacity:.5}
 .plan-text{color:var(--text);font-weight:500;font-size:14px}
+.plan-ai-mark{
+  display:inline-block;margin-right:6px;font-size:13px;font-weight:700;line-height:1;
+  background:linear-gradient(135deg,var(--orange),var(--orange-dk));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1024px){

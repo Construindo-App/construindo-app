@@ -12,14 +12,20 @@ const features = [
   {
     label: 'Obras ativas',
     iniciante: '1',
-    profissional: 'Até 5',
+    profissional: 'Até 3',
     escritorio: 'Ilimitadas',
   },
-  { label: 'Financeiro básico',    iniciante: true,  profissional: true,  escritorio: true  },
-  { label: 'Timeline da obra',     iniciante: true,  profissional: true,  escritorio: true  },
-  { label: 'Upload de fotos',      iniciante: true,  profissional: true,  escritorio: true  },
-  { label: 'Compartilhar obra',    iniciante: true,  profissional: true,  escritorio: true  },
-  { label: 'Checklist / Tarefas',  iniciante: true,  profissional: true,  escritorio: true  },
+  { label: 'Financeiro',           iniciante: true,  profissional: true,  escritorio: true  },
+  { label: 'Diário de obra',       iniciante: true,  profissional: true,  escritorio: true  },
+  { label: 'Leitor de notas IA',   ai: true,         iniciante: false, profissional: false, escritorio: true  },
+  { label: 'Gerenciamento de venda', iniciante: true,  profissional: true,  escritorio: true  },
+  {
+    label: 'Gestão de documentos',
+    iniciante: '10 documentos',
+    profissional: 'Ilimitado',
+    escritorio: 'Ilimitado',
+  },
+  { label: 'Checklist / Etapas',   iniciante: true,  profissional: true,  escritorio: true  },
   { label: 'Relatórios simples',   iniciante: false, profissional: true,  escritorio: true  },
   {
     label: 'Múltiplos usuários',
@@ -46,7 +52,6 @@ export default function PlanosPage() {
 
       <div className="plans-hero">
         <div className="plans-hero-inner">
-          <div className="eyebrow">Planos e preços</div>
           <h1 className="plans-h1">Simples, transparente,<br /><span className="grad">sem surpresas.</span></h1>
           <p className="plans-sub">Comece de graça e escale conforme sua operação cresce.</p>
         </div>
@@ -84,7 +89,7 @@ export default function PlanosPage() {
               Assinar agora
             </Link>
             <ul className="plan-perks">
-              <li>Até 5 obras ativas</li>
+              <li>Até 3 obras ativas</li>
               <li>Tudo do Iniciante</li>
               <li>Relatórios simples</li>
               <li>2 usuários</li>
@@ -132,7 +137,10 @@ export default function PlanosPage() {
               <tbody>
                 {features.map((f) => (
                   <tr key={f.label}>
-                    <td className="plans-td-feat">{f.label}</td>
+                    <td className="plans-td-feat">
+                      {'ai' in f && f.ai && <span className="plan-ai-mark">✦</span>}
+                      {f.label}
+                    </td>
                     <td><Cell value={f.iniciante} /></td>
                     <td className="plans-td-featured"><Cell value={f.profissional} /></td>
                     <td><Cell value={f.escritorio} /></td>
