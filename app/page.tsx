@@ -36,7 +36,7 @@ export default function Home() {
                 <span className="btn-store-name">App Store</span>
               </div>
             </Link>
-            <Link href="#" className="btn-store btn-store-outline">
+            <Link href="https://play.google.com/store/apps/details?id=app.construindo" className="btn-store btn-store-outline" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M3.18 23.76c.28.15.6.2.94.1l12.5-7.13-2.67-2.67-10.77 9.7zM.5 1.3C.18 1.62 0 2.1 0 2.72v18.56c0 .62.18 1.1.5 1.42l.08.07 10.4-10.4v-.25L.57 1.24l-.07.06zM20.33 10.52l-2.67-1.52-2.96 2.96 2.96 2.96 2.68-1.53c.77-.44.77-1.44-.01-1.87zM4.12.24L16.62 7.4l-2.67 2.67L3.18.24c.35-.1.67-.04.94.1v-.1z" fillRule="evenodd" /></svg>
               <div className="btn-store-text">
                 <span className="btn-store-pre">GET IT ON</span>
@@ -127,7 +127,7 @@ export default function Home() {
                     <span className="btn-store-name">App Store</span>
                   </div>
                 </Link>
-                <Link href="#" className="btn-store btn-store-white">
+                <Link href="https://play.google.com/store/apps/details?id=app.construindo" className="btn-store btn-store-white" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M3.18 23.76c.28.15.6.2.94.1l12.5-7.13-2.67-2.67-10.77 9.7zM.5 1.3C.18 1.62 0 2.1 0 2.72v18.56c0 .62.18 1.1.5 1.42l.08.07 10.4-10.4v-.25L.57 1.24l-.07.06zM20.33 10.52l-2.67-1.52-2.96 2.96 2.96 2.96 2.68-1.53c.77-.44.77-1.44-.01-1.87zM4.12.24L16.62 7.4l-2.67 2.67L3.18.24c.35-.1.67-.04.94.1v-.1z" fillRule="evenodd" /></svg>
                   <div className="btn-store-text">
                     <span className="btn-store-pre">GET IT ON</span>
