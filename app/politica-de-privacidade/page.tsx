@@ -16,7 +16,7 @@ export default function PoliticaDePrivacidade() {
         <div className="page-header-inner">
           <div className="page-badge">📋 Documento Legal</div>
           <h1>Política de Privacidade</h1>
-          <p>Versão 1.0 — 17 de março de 2026</p>
+          <p>Versão 1.1 — 3 de agosto de 2026</p>
         </div>
       </div>
 
@@ -126,9 +126,18 @@ export default function PoliticaDePrivacidade() {
             <li>Ferramentas de análise e monitoramento de desempenho.</li>
           </ul>
           <p>Esses fornecedores atuam como Operadores de Dados e estão contratualmente obrigados a tratar os dados conforme nossas instruções e em conformidade com a LGPD.</p>
-          <h3>4.3 Transferência Internacional</h3>
+          <h3>4.3 Meta Platforms (publicidade e mensuração)</h3>
+          <p>A Empresa utiliza tecnologias da <strong>Meta Platforms, Inc.</strong> e da <strong>Meta Platforms Ireland Limited</strong> (responsáveis pelo Facebook e pelo Instagram), que atuam como <strong>Operadoras</strong> de dados pessoais, para veicular e mensurar o desempenho de suas campanhas publicitárias. O compartilhamento ocorre de duas formas:</p>
+          <ul>
+            <li><strong>Pixel da Meta (site):</strong> ao navegar em construindo.app, são coletados e enviados à Meta o endereço IP, o identificador de cookie do navegador, a página visitada e o clique em botões de download e de contratação de plano;</li>
+            <li><strong>API de Conversões (servidor):</strong> quando uma assinatura é contratada, a Empresa envia à Meta, a partir de seus próprios servidores, o registro do evento de assinatura acompanhado de um identificador da empresa contratante submetido a criptografia unidirecional (hash SHA-256). A Meta não recebe o identificador em formato legível.</li>
+          </ul>
+          <p><strong>Base legal:</strong> consentimento do Usuário (art. 7.º, I, da LGPD) para as finalidades de publicidade e mensuração. O Usuário pode revogar o consentimento a qualquer momento, sem prejuízo do uso da Plataforma, por meio do e-mail <a href="mailto:privacidade@construindo.com.br" style={{ color: 'var(--orange)', fontWeight: 600 }}>privacidade@construindo.com.br</a>, das configurações de cookies do seu navegador ou das preferências de anúncios da própria Meta.</p>
+          <p>Esse compartilhamento envolve <strong>transferência internacional de dados</strong> para os Estados Unidos e para a União Europeia, observado o disposto no item 4.4 abaixo. A Meta atua sob termos contratuais próprios de tratamento de dados e as informações não são utilizadas pela Empresa para decisões automatizadas que afetem os interesses do Usuário.</p>
+
+          <h3>4.4 Transferência Internacional</h3>
           <p>Eventuais transferências internacionais de dados pessoais somente ocorrerão para países ou organismos internacionais que proporcionem grau de proteção de dados adequado, ou mediante a adoção de salvaguardas específicas, conforme art. 33 da LGPD.</p>
-          <h3>4.4 Autoridades</h3>
+          <h3>4.5 Autoridades</h3>
           <p>Dados poderão ser compartilhados com autoridades públicas, judiciais ou regulatórias, sempre que exigido por lei ou ordem judicial.</p>
         </div>
 
@@ -183,8 +192,10 @@ export default function PoliticaDePrivacidade() {
           <ul>
             <li>Manter a sessão do Usuário autenticado;</li>
             <li>Lembrar preferências e configurações;</li>
-            <li>Analisar o uso da Plataforma e aprimorar a experiência.</li>
+            <li>Analisar o uso da Plataforma e aprimorar a experiência;</li>
+            <li>Mensurar o desempenho de campanhas publicitárias, por meio de <strong>cookies de terceiros do Pixel da Meta</strong>, conforme detalhado no item 4.3 desta Política.</li>
           </ul>
+          <p>Os cookies de publicidade e mensuração dependem do consentimento do Usuário e não são necessários ao funcionamento da Plataforma; sua recusa não impede o uso dos serviços.</p>
           <p>O Usuário pode configurar seu navegador para bloquear cookies; no entanto, isso pode impactar o funcionamento de algumas funcionalidades da Plataforma. No aplicativo mobile, identificadores de dispositivo podem ser utilizados com finalidades similares.</p>
         </div>
 
@@ -226,7 +237,7 @@ export default function PoliticaDePrivacidade() {
             <p>📍 <strong>Endereço:</strong> Rua Maranhão 1665, Centro - Cascavel, PR</p>
             <p>📞 <strong>Telefone:</strong> (45) 99147-0711</p>
           </div>
-          <p style={{ marginTop: '28px', fontSize: '14px', color: 'var(--muted)' }}><strong>Construindo</strong> — Última atualização: 17 de março de 2026</p>
+          <p style={{ marginTop: '28px', fontSize: '14px', color: 'var(--muted)' }}><strong>Construindo</strong> — Última atualização: 3 de agosto de 2026</p>
         </div>
       </div>
 

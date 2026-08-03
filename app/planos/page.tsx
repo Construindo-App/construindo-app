@@ -10,29 +10,41 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    label: 'Obras ativas',
+    label: 'Obras',
     iniciante: '1',
-    profissional: 'Até 3',
+    profissional: '5',
     escritorio: 'Ilimitadas',
+  },
+  {
+    label: 'Unidades por empreendimento',
+    iniciante: '2',
+    profissional: '5',
+    escritorio: 'Ilimitadas',
+  },
+  {
+    label: 'Usuários',
+    iniciante: '1',
+    profissional: '2',
+    escritorio: 'Ilimitados',
   },
   { label: 'Financeiro',           iniciante: true,  profissional: true,  escritorio: true  },
   { label: 'Diário de obra',       iniciante: true,  profissional: true,  escritorio: true  },
-  { label: 'Leitor de notas IA',   ai: true,         iniciante: false, profissional: false, escritorio: true  },
+  {
+    label: 'Leitor de notas IA',
+    ai: true,
+    iniciante: '10 leituras',
+    profissional: 'Ilimitado',
+    escritorio: 'Ilimitado',
+  },
   { label: 'Gerenciamento de venda', iniciante: true,  profissional: true,  escritorio: true  },
   {
-    label: 'Gestão de documentos',
-    iniciante: '10 documentos',
+    label: 'Documentos por obra',
+    iniciante: '6',
     profissional: 'Ilimitado',
     escritorio: 'Ilimitado',
   },
   { label: 'Checklist / Etapas',   iniciante: true,  profissional: true,  escritorio: true  },
   { label: 'Relatórios simples',   iniciante: false, profissional: true,  escritorio: true  },
-  {
-    label: 'Múltiplos usuários',
-    iniciante: false,
-    profissional: '2 usuários',
-    escritorio: 'Ilimitados',
-  },
   { label: 'Permissões de equipe', iniciante: false, profissional: false, escritorio: true  },
   { label: 'Dashboard consolidado',iniciante: false, profissional: false, escritorio: true  },
   { label: 'Exportação PDF/Excel', iniciante: false, profissional: true,  escritorio: true  },
@@ -53,7 +65,7 @@ export default function PlanosPage() {
       <div className="plans-hero">
         <div className="plans-hero-inner">
           <h1 className="plans-h1">Simples, transparente,<br /><span className="grad">sem surpresas.</span></h1>
-          <p className="plans-sub">Comece de graça e escale conforme sua operação cresce.</p>
+          <p className="plans-sub">Comece de graça. Quando a segunda obra chegar, você já sabe quanto custa.</p>
         </div>
         <div className="plans-cards-inner">
 
@@ -61,19 +73,21 @@ export default function PlanosPage() {
           <div className="plan-card">
             <div className="plan-card-top">
               <div className="plan-name">Iniciante</div>
-              <div className="plan-price"><span className="plan-price-val">R$0</span><span className="plan-price-per">/mês</span></div>
-              <div className="plan-price-note">Para sempre gratuito · 1 obra</div>
+              <div className="plan-price"><span className="plan-price-val">R$0</span><span className="plan-price-per">/sempre</span></div>
+              <div className="plan-price-note">Sem cartão, sem prazo de teste</div>
+              <div className="plan-price-alt">1 obra, para você começar hoje</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer">
+            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="iniciante">
               Começar grátis
             </Link>
             <ul className="plan-perks">
-              <li>1 obra ativa</li>
-              <li>Financeiro limitado</li>
+              <li>1 obra, até 2 unidades</li>
+              <li>Financeiro da obra</li>
               <li>Diário da obra</li>
               <li>Cadastrar venda</li>
               <li>Controle de pagamentos</li>
-              <li>Gestão de documentos</li>
+              <li>6 documentos por obra</li>
+              <li>10 leituras de nota com IA</li>
             </ul>
           </div>
 
@@ -82,14 +96,17 @@ export default function PlanosPage() {
             <div className="plan-badge-featured">Mais popular</div>
             <div className="plan-card-top">
               <div className="plan-name">Profissional</div>
-              <div className="plan-price"><span className="plan-price-val">R$49</span><span className="plan-price-per">/mês</span></div>
-              <div className="plan-price-note">R$490/ano · economize 2 meses</div>
+              <div className="plan-price"><span className="plan-price-val">R$490</span><span className="plan-price-per">/ano</span></div>
+              <div className="plan-price-note">Equivale a R$40,83/mês · 2 meses grátis</div>
+              <div className="plan-price-alt">ou R$49/mês no plano mensal</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--primary" target="_blank" rel="noopener noreferrer">
+            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--primary" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="profissional">
               Assinar agora
             </Link>
             <ul className="plan-perks">
-              <li>Até 3 obras ativas</li>
+              <li>5 obras, até 5 unidades cada</li>
+              <li>Leitor de notas com IA ilimitado</li>
+              <li>Documentos ilimitados</li>
               <li>Tudo do Iniciante</li>
               <li>Relatórios simples</li>
               <li>2 usuários</li>
@@ -101,18 +118,18 @@ export default function PlanosPage() {
           <div className="plan-card">
             <div className="plan-card-top">
               <div className="plan-name">Escritório</div>
-              <div className="plan-price"><span className="plan-price-val">R$129</span><span className="plan-price-per">/mês</span></div>
-              <div className="plan-price-note">R$1.290/ano · economize 2 meses</div>
+              <div className="plan-price"><span className="plan-price-val">R$1.290</span><span className="plan-price-per">/ano</span></div>
+              <div className="plan-price-note">Equivale a R$107,50/mês · 2 meses grátis</div>
+              <div className="plan-price-alt">ou R$129/mês no plano mensal</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer">
+            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="escritorio">
               Assinar agora
             </Link>
             <ul className="plan-perks">
-              <li>Obras ilimitadas</li>
-              <li>Tudo do Profissional</li>
               <li>Usuários ilimitados</li>
-              <li>Permissões de equipe</li>
-              <li>Dashboard consolidado</li>
+              <li>Permissões por membro da equipe</li>
+              <li>Dashboard com todas as obras juntas</li>
+              <li>Tudo do Profissional</li>
               <li>Suporte prioritário</li>
             </ul>
           </div>

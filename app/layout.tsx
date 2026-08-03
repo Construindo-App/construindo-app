@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Cardo } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import MetaPixel from '@/components/MetaPixel'
 import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${jakarta.variable} ${cardo.variable}`}>
-      <body>{children}<Analytics /></body>
+      <body>{children}<Analytics /><MetaPixel /></body>
     </html>
   )
 }
