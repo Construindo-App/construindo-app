@@ -13,8 +13,19 @@ export default function Nav() {
       setScrolled(window.scrollY > 40)
       if (window.scrollY > 40) setMenuOpen(false)
     }
+
+    // Sincroniza no mount: a página pode montar já rolada (reload com scroll
+    // restaurado, volta pelo histórico, ou entrada por link âncora). Sem isto
+    // a barra fica transparente até o primeiro scroll do usuário.
+    onScroll()
+    // A restauração de scroll do navegador pode acontecer depois da hidratação.
+    const raf = requestAnimationFrame(onScroll)
+
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   const closeMenu = () => setMenuOpen(false)
