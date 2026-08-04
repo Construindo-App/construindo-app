@@ -1780,7 +1780,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   text-align:center;
   border-bottom:1px solid var(--border);
 }
-.plans-hero-inner{max-width:760px;margin:0 auto;margin-bottom:56px;padding:0 var(--gutter)}
+.plans-hero-inner{max-width:980px;margin:0 auto;margin-bottom:40px;padding:0 var(--gutter)}
 .plans-h1{
   font-size:clamp(36px,4.5vw,60px);
   font-weight:700;letter-spacing:-1.5px;line-height:1.05;
@@ -1863,7 +1863,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 /* ─── BILLING TOGGLE (mensal / anual) ─── */
 .billing-toggle{
   display:flex;align-items:center;justify-content:center;gap:12px;
-  width:fit-content;margin:0 auto 36px;
+  width:fit-content;margin:0 auto 40px;
   padding:8px 14px;border-radius:999px;
   background:#fff;border:1px solid #e9e2da;
   box-shadow:0 2px 10px rgba(0,0,0,.04);
