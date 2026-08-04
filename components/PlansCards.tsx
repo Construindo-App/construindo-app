@@ -42,7 +42,7 @@ const PLANS: Plan[] = [
     cta: 'Começar grátis',
     ctaVariant: 'outline',
     perks: [
-      '1 obra, até 2 unidades',
+      '1 obra',
       'Financeiro da obra',
       'Diário da obra',
       'Cadastrar venda',
@@ -70,7 +70,7 @@ const PLANS: Plan[] = [
     cta: 'Assinar agora',
     ctaVariant: 'primary',
     perks: [
-      '5 obras, até 5 unidades cada',
+      '5 obras',
       'Leitor de notas com IA ilimitado',
       'Documentos ilimitados',
       'Tudo do Iniciante',

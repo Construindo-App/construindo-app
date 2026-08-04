@@ -16,12 +16,6 @@ const features = [
     escritorio: 'Ilimitadas',
   },
   {
-    label: 'Unidades por empreendimento',
-    iniciante: '2',
-    profissional: '5',
-    escritorio: 'Ilimitadas',
-  },
-  {
     label: 'Usuários',
     iniciante: '1',
     profissional: '2',
