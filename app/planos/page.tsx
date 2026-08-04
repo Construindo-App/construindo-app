@@ -77,7 +77,7 @@ export default function PlanosPage() {
               <div className="plan-price-note">Sem cartão, sem prazo de teste</div>
               <div className="plan-price-alt">1 obra, para você começar hoje</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="iniciante">
+            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="iniciante">
               Começar grátis
             </Link>
             <ul className="plan-perks">
@@ -100,7 +100,7 @@ export default function PlanosPage() {
               <div className="plan-price-note">Equivale a R$40,83/mês · 2 meses grátis</div>
               <div className="plan-price-alt">ou R$49/mês no plano mensal</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--primary" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="profissional">
+            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--primary" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="profissional">
               Assinar agora
             </Link>
             <ul className="plan-perks">
@@ -122,7 +122,7 @@ export default function PlanosPage() {
               <div className="plan-price-note">Equivale a R$107,50/mês · 2 meses grátis</div>
               <div className="plan-price-alt">ou R$129/mês no plano mensal</div>
             </div>
-            <Link href="https://apps.apple.com/us/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="escritorio">
+            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="escritorio">
               Assinar agora
             </Link>
             <ul className="plan-perks">
