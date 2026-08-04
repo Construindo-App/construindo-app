@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import PlansCards from '@/components/PlansCards'
 
 export const metadata: Metadata = {
   title: 'Planos — Construindo',
@@ -67,74 +67,7 @@ export default function PlanosPage() {
           <h1 className="plans-h1">Simples, transparente,<br /><span className="grad">sem surpresas.</span></h1>
           <p className="plans-sub">Comece de graça. Quando a segunda obra chegar, você já sabe quanto custa.</p>
         </div>
-        <div className="plans-cards-inner">
-
-          {/* Iniciante */}
-          <div className="plan-card">
-            <div className="plan-card-top">
-              <div className="plan-name">Iniciante</div>
-              <div className="plan-price"><span className="plan-price-val">R$0</span><span className="plan-price-per">/sempre</span></div>
-              <div className="plan-price-note">Sem cartão, sem prazo de teste</div>
-              <div className="plan-price-alt">1 obra, para você começar hoje</div>
-            </div>
-            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="iniciante">
-              Começar grátis
-            </Link>
-            <ul className="plan-perks">
-              <li>1 obra, até 2 unidades</li>
-              <li>Financeiro da obra</li>
-              <li>Diário da obra</li>
-              <li>Cadastrar venda</li>
-              <li>Controle de pagamentos</li>
-              <li>6 documentos por obra</li>
-              <li>10 leituras de nota com IA</li>
-            </ul>
-          </div>
-
-          {/* Profissional */}
-          <div className="plan-card plan-card--featured">
-            <div className="plan-badge-featured">Mais popular</div>
-            <div className="plan-card-top">
-              <div className="plan-name">Profissional</div>
-              <div className="plan-price"><span className="plan-price-val">R$490</span><span className="plan-price-per">/ano</span></div>
-              <div className="plan-price-note">Equivale a R$40,83/mês · 2 meses grátis</div>
-              <div className="plan-price-alt">ou R$49/mês no plano mensal</div>
-            </div>
-            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--primary" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="profissional">
-              Assinar agora
-            </Link>
-            <ul className="plan-perks">
-              <li>5 obras, até 5 unidades cada</li>
-              <li>Leitor de notas com IA ilimitado</li>
-              <li>Documentos ilimitados</li>
-              <li>Tudo do Iniciante</li>
-              <li>Relatórios simples</li>
-              <li>2 usuários</li>
-              <li>Exportação PDF/Excel</li>
-            </ul>
-          </div>
-
-          {/* Escritório */}
-          <div className="plan-card">
-            <div className="plan-card-top">
-              <div className="plan-name">Escritório</div>
-              <div className="plan-price"><span className="plan-price-val">R$1.290</span><span className="plan-price-per">/ano</span></div>
-              <div className="plan-price-note">Equivale a R$107,50/mês · 2 meses grátis</div>
-              <div className="plan-price-alt">ou R$129/mês no plano mensal</div>
-            </div>
-            <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="plan-cta plan-cta--outline" target="_blank" rel="noopener noreferrer" data-fb-event="PlanCtaClick" data-fb-plan="escritorio">
-              Assinar agora
-            </Link>
-            <ul className="plan-perks">
-              <li>Usuários ilimitados</li>
-              <li>Permissões por membro da equipe</li>
-              <li>Dashboard com todas as obras juntas</li>
-              <li>Tudo do Profissional</li>
-              <li>Suporte prioritário</li>
-            </ul>
-          </div>
-
-        </div>
+        <PlansCards />
       </div>
 
       {/* COMPARISON TABLE */}
