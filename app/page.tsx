@@ -26,7 +26,7 @@ export default function Home() {
             Sua obra.<br /><span className="grad">Sob controle.</span>
           </h1>
           <p className="hero-sub">
-            Lance a nota à noite, do celular, e saiba na hora quanto a obra já consumiu. Orçamento, diário, equipe e documentos no mesmo app — sem planilha, sem grupo de WhatsApp.
+            Do canteiro ao escritório — cronograma, orçamento, equipes e documentos em um único app. Chega de planilha, chega de WhatsApp.
           </p>
           <div className="hero-actions">
             <Link href="https://apps.apple.com/br/app/construindo/id6767595567" className="btn-store btn-store-dark" target="_blank" rel="noopener noreferrer" data-fb-event="DownloadClick" data-fb-platform="ios">
