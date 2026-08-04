@@ -44,7 +44,7 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          <p className="hero-free"><span className="hero-free-star" aria-hidden="true">✳</span>Grátis para a sua primeira obra. Sem cartão.</p>
+          <p className="hero-free"><span className="hero-free-star" aria-hidden="true">✳</span>Experimente nosso plano gratuito para 1 obra</p>
         </div>
         <div className="hero-right">
           {/* Clip wrapper — overflow:hidden here so cards can escape hero-right */}
