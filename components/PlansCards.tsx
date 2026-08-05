@@ -3,7 +3,18 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-const APP_STORE = 'https://apps.apple.com/br/app/construindo/id6767595567'
+const DOWNLOAD_URL = 'https://api.construindo.app/link/download'
+
+/** O redirecionamento por plataforma (iOS / Android) é feito pelo backend. */
+function downloadHref(plan: string, annual: boolean) {
+  const params = new URLSearchParams({
+    utm_source: 'lp',
+    utm_medium: 'planos',
+    utm_content: plan,
+    utm_term: annual ? 'annual' : 'monthly',
+  })
+  return `${DOWNLOAD_URL}?${params}`
+}
 
 /**
  * Desconto real do anual sobre o mensal:
@@ -162,7 +173,7 @@ export default function PlansCards() {
                 <div className="plan-price-alt">{price.alt}</div>
               </div>
               <Link
-                href={APP_STORE}
+                href={downloadHref(plan.id, annual)}
                 className={`plan-cta plan-cta--${plan.ctaVariant}`}
                 target="_blank"
                 rel="noopener noreferrer"
