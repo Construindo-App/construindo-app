@@ -16,8 +16,8 @@ const COLUMNS: Column[] = [
       {
         type: 'quote',
         quote: 'Reduzimos desvios de orçamento em 28% no primeiro trimestre. O alerta em tempo real mudou tudo.',
-        name: 'Ana Lima',
-        role: 'Engenheira de Custos, Tenda',
+        name: 'Angela',
+        role: 'Nobre Construtora Ltda',
         avatar: '/avatars/ana.jpg',
       },
       {
