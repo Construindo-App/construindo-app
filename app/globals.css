@@ -1524,6 +1524,46 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
 .footer-col ul li a{font-size:14px;color:rgba(255,255,255,.7);transition:color .2s}
 .footer-col ul li a:hover{color:#fff}
+.footer-linkbtn{
+  background:none;border:none;padding:0;cursor:pointer;
+  font-family:inherit;font-size:14px;color:rgba(255,255,255,.7);
+  transition:color .2s;
+}
+.footer-linkbtn:hover{color:#fff}
+
+/* ─── BANNER DE CONSENTIMENTO (LGPD) ─── */
+.consent{
+  position:fixed;z-index:400;
+  left:16px;right:16px;bottom:16px;
+  max-width:560px;margin:0 auto;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:16px 20px;border-radius:16px;
+  background:#fff;border:1px solid var(--border);
+  box-shadow:0 12px 40px rgba(0,0,0,.16);
+}
+.consent-text{
+  flex:1 1 260px;
+  font-size:13px;line-height:1.55;color:var(--muted);margin:0;
+}
+.consent-text a{color:var(--orange);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.consent-actions{display:flex;gap:10px;flex:0 0 auto}
+.consent-btn{
+  font-family:inherit;font-size:14px;font-weight:600;
+  padding:9px 18px;border-radius:999px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+  white-space:nowrap;
+}
+.consent-btn--primary{background:var(--orange);color:#fff;border:1px solid var(--orange)}
+.consent-btn--primary:hover{background:var(--orange-dk);border-color:var(--orange-dk)}
+.consent-btn--ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.consent-btn--ghost:hover{background:var(--bg)}
+.consent-btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+@media(max-width:560px){
+  .consent{gap:14px}
+  .consent-actions{width:100%}
+  .consent-btn{flex:1 1 0}
+}
 .footer-bottom{max-width:var(--container-w);margin:0 auto;padding:28px var(--gutter) 0;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .footer-bottom p{font-size:13px;color:rgba(255,255,255,.7)}
 

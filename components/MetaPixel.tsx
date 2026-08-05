@@ -1,9 +1,13 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { CONSENT_EVENT, readConsent } from '@/lib/consent'
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
+// O Pixel ID é público (aparece no HTML de qualquer forma). Fica fixo para não
+// depender de variável de ambiente; a env sobrescreve quando presente, o que
+// permite apontar preview para outro dataset ou desligar o pixel.
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1964939817558572'
 
 declare global {
   interface Window {
@@ -13,6 +17,9 @@ declare global {
 
 /**
  * Pixel da Meta para a landing page.
+ *
+ * Só carrega DEPOIS do consentimento explícito (ver `lib/consent`). Antes
+ * disso nada é requisitado da Meta e nenhum cookie de terceiro é criado.
  *
  * Dispara SOMENTE PageView e eventos de clique (DownloadClick / PlanCtaClick).
  *
@@ -26,8 +33,23 @@ declare global {
  * envolver cada CTA num componente cliente.
  */
 export default function MetaPixel() {
+  const [granted, setGranted] = useState(false)
+
+  // Começa `false` no servidor e no primeiro render do cliente — sem
+  // divergência de hidratação. A leitura real acontece no efeito.
   useEffect(() => {
-    if (!PIXEL_ID) return
+    const sync = () => setGranted(readConsent() === 'granted')
+    sync()
+    window.addEventListener(CONSENT_EVENT, sync)
+    window.addEventListener('storage', sync) // escolha feita em outra aba
+    return () => {
+      window.removeEventListener(CONSENT_EVENT, sync)
+      window.removeEventListener('storage', sync)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!granted) return
 
     const onClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null
@@ -40,15 +62,16 @@ export default function MetaPixel() {
       const params: Record<string, string> = {}
       if (el.dataset.fbPlatform) params.platform = el.dataset.fbPlatform
       if (el.dataset.fbPlan) params.plan = el.dataset.fbPlan
+      if (el.dataset.fbBilling) params.billing = el.dataset.fbBilling
 
       window.fbq?.('trackCustom', name, params)
     }
 
     document.addEventListener('click', onClick)
     return () => document.removeEventListener('click', onClick)
-  }, [])
+  }, [granted])
 
-  if (!PIXEL_ID) return null
+  if (!granted || !PIXEL_ID) return null
 
   return (
     <>

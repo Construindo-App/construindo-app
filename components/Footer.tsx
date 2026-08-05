@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ConsentLink from '@/components/ConsentLink'
 
 interface FooterProps {
   variant?: 'main' | 'legal'
@@ -60,6 +61,7 @@ export default function Footer({ variant = 'main' }: FooterProps) {
           <ul>
             <li><Link href="/politica-de-privacidade">Privacidade</Link></li>
             <li><Link href="/termos-de-uso">Termos de Uso</Link></li>
+            <li><ConsentLink /></li>
             <li><Link href="#">Central de Ajuda</Link></li>
             <li><Link href="#">{variant === 'main' ? 'Status' : 'Fale Conosco'}</Link></li>
           </ul>
