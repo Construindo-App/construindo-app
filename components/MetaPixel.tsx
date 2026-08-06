@@ -15,11 +15,24 @@ declare global {
   }
 }
 
+const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '::1', '0.0.0.0'])
+
+/**
+ * Desenvolvimento não pode sujar os dados de produção: um PageView disparado
+ * de `npm run dev` entra no dataset real e vira ruído no relatório.
+ */
+function isLocalhost() {
+  if (typeof window === 'undefined') return false
+  return LOCAL_HOSTS.has(window.location.hostname)
+}
+
 /**
  * Pixel da Meta para a landing page.
  *
- * Só carrega DEPOIS do consentimento explícito (ver `lib/consent`). Antes
- * disso nada é requisitado da Meta e nenhum cookie de terceiro é criado.
+ * Carrega por padrão. Quem se opõe usa o link no rodapé, que grava `denied`
+ * e impede o carregamento (ver `lib/consent`) — é o direito de oposição do
+ * art. 18, § 2.º, da LGPD, coerente com o legítimo interesse declarado na
+ * seção 4.3 da Política de Privacidade.
  *
  * Dispara SOMENTE PageView e eventos de clique (DownloadClick / PlanCtaClick).
  *
@@ -38,7 +51,12 @@ export default function MetaPixel() {
   // Começa `false` no servidor e no primeiro render do cliente — sem
   // divergência de hidratação. A leitura real acontece no efeito.
   useEffect(() => {
-    const sync = () => setGranted(readConsent() === 'granted')
+    // Em localhost o pixel nunca carrega: `granted` fica false para sempre.
+    // O banner continua aparecendo, para dar pra testar a UI do consentimento.
+    if (isLocalhost()) return
+
+    // Liga por padrão: só não carrega para quem optou por sair explicitamente.
+    const sync = () => setGranted(readConsent() !== 'denied')
     sync()
     window.addEventListener(CONSENT_EVENT, sync)
     window.addEventListener('storage', sync) // escolha feita em outra aba

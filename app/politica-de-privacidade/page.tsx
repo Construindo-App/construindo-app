@@ -16,7 +16,7 @@ export default function PoliticaDePrivacidade() {
         <div className="page-header-inner">
           <div className="page-badge">📋 Documento Legal</div>
           <h1>Política de Privacidade</h1>
-          <p>Versão 1.1 — 3 de agosto de 2026</p>
+          <p>Versão 1.2 — 5 de agosto de 2026</p>
         </div>
       </div>
 
@@ -132,7 +132,8 @@ export default function PoliticaDePrivacidade() {
             <li><strong>Pixel da Meta (site):</strong> ao navegar em construindo.app, são coletados e enviados à Meta o endereço IP, o identificador de cookie do navegador, a página visitada e o clique em botões de download e de contratação de plano;</li>
             <li><strong>API de Conversões (servidor):</strong> quando uma assinatura é contratada, a Empresa envia à Meta, a partir de seus próprios servidores, o registro do evento de assinatura acompanhado de um identificador da empresa contratante submetido a criptografia unidirecional (hash SHA-256). A Meta não recebe o identificador em formato legível.</li>
           </ul>
-          <p><strong>Base legal:</strong> consentimento do Usuário (art. 7.º, I, da LGPD) para as finalidades de publicidade e mensuração. O Usuário pode revogar o consentimento a qualquer momento, sem prejuízo do uso da Plataforma, por meio do e-mail <a href="mailto:privacidade@construindo.com.br" style={{ color: 'var(--orange)', fontWeight: 600 }}>privacidade@construindo.com.br</a>, das configurações de cookies do seu navegador ou das preferências de anúncios da própria Meta.</p>
+          <p><strong>Base legal:</strong> legítimo interesse da Empresa (art. 7.º, IX, da LGPD) na divulgação e na mensuração de desempenho de seus próprios produtos, observados os limites do art. 10 da LGPD. Esse tratamento não envolve dados sensíveis nem decisões automatizadas que afetem os interesses do Usuário.</p>
+          <p><strong>Direito de oposição:</strong> nos termos do art. 18, § 2.º, da LGPD, o Usuário pode se opor a esse tratamento a qualquer momento, sem prejuízo do uso da Plataforma, pelo link <em>&ldquo;Desativar cookies de anúncios&rdquo;</em> disponível no rodapé de todas as páginas, pelo e-mail <a href="mailto:privacidade@construindo.com.br" style={{ color: 'var(--orange)', fontWeight: 600 }}>privacidade@construindo.com.br</a>, pelas configurações de cookies do seu navegador ou pelas preferências de anúncios da própria Meta.</p>
           <p>Esse compartilhamento envolve <strong>transferência internacional de dados</strong> para os Estados Unidos e para a União Europeia, observado o disposto no item 4.4 abaixo. A Meta atua sob termos contratuais próprios de tratamento de dados e as informações não são utilizadas pela Empresa para decisões automatizadas que afetem os interesses do Usuário.</p>
 
           <h3>4.4 Transferência Internacional</h3>
@@ -195,7 +196,7 @@ export default function PoliticaDePrivacidade() {
             <li>Analisar o uso da Plataforma e aprimorar a experiência;</li>
             <li>Mensurar o desempenho de campanhas publicitárias, por meio de <strong>cookies de terceiros do Pixel da Meta</strong>, conforme detalhado no item 4.3 desta Política.</li>
           </ul>
-          <p>Os cookies de publicidade e mensuração dependem do consentimento do Usuário e não são necessários ao funcionamento da Plataforma; sua recusa não impede o uso dos serviços.</p>
+          <p>Os cookies de publicidade e mensuração não são necessários ao funcionamento da Plataforma. O Usuário pode desativá-los a qualquer momento pelo link <em>&ldquo;Desativar cookies de anúncios&rdquo;</em> no rodapé, sem qualquer prejuízo ao uso dos serviços.</p>
           <p>O Usuário pode configurar seu navegador para bloquear cookies; no entanto, isso pode impactar o funcionamento de algumas funcionalidades da Plataforma. No aplicativo mobile, identificadores de dispositivo podem ser utilizados com finalidades similares.</p>
         </div>
 
@@ -237,7 +238,7 @@ export default function PoliticaDePrivacidade() {
             <p>📍 <strong>Endereço:</strong> Rua Maranhão 1665, Centro - Cascavel, PR</p>
             <p>📞 <strong>Telefone:</strong> (45) 99147-0711</p>
           </div>
-          <p style={{ marginTop: '28px', fontSize: '14px', color: 'var(--muted)' }}><strong>Construindo</strong> — Última atualização: 3 de agosto de 2026</p>
+          <p style={{ marginTop: '28px', fontSize: '14px', color: 'var(--muted)' }}><strong>Construindo</strong> — Última atualização: 5 de agosto de 2026</p>
         </div>
       </div>
 
