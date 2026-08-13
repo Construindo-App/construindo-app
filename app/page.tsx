@@ -23,7 +23,7 @@ export default function Home() {
             <Image src="/icon-logo.png" alt="Construindo" width={72} height={72} priority />
           </div>
           <h1 className="hero-h1">
-            Sua obra.<br /><span className="grad">Sob controle.</span>
+            Gestão de obras,<br /><span className="grad">Simplificada.</span>
           </h1>
           <p className="hero-sub">
             Do canteiro ao escritório — cronograma, orçamento, equipes e documentos em um único app. Chega de planilha, chega de WhatsApp.

@@ -1,12 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import ReceiptReaderScreen from '@/components/ReceiptReaderScreen'
 
 const STEPS = [
   {
     num: '01',
-    title: 'Controle financeiro',
-    text: 'Acompanhe orçado vs. realizado em tempo real. Identifique desvios antes que virem problema — não no fim do mês.',
+    title: 'Leitor de notas com IA',
+    text: 'Fotografe a nota fiscal e pronto: a IA lê fornecedor, itens e total, e lança tudo na obra certa. Sem digitar, sem guardar papel no porta-luvas.',
   },
   {
     num: '02',
@@ -20,15 +21,6 @@ const STEPS = [
   },
 ]
 
-const financeRows = [
-  { date: '24/01/2025', name: 'Porcelanatos Sala Estar', cat: '#E85440', val: 'R$1.271,38' },
-  { date: '24/01/2025', name: 'Serviço de Pedreiro', cat: '#E8407E', val: 'R$1.800,00' },
-  { date: '23/01/2025', name: 'Cimento Portland CP-II', cat: '#E85440', val: 'R$890,00' },
-  { date: '23/01/2025', name: 'Areia e Brita', cat: '#F5A020', val: 'R$620,50' },
-  { date: '22/01/2025', name: 'Instalação Elétrica', cat: '#E8407E', val: 'R$2.400,00' },
-  { date: '22/01/2025', name: 'Vergalhão CA-50', cat: '#F5A020', val: 'R$3.180,00' },
-]
-
 const teamRows = [
   { name: 'Carlos Silva', role: 'Pedreiro', present: true, pay: 'R$320/dia' },
   { name: 'João Oliveira', role: 'Eletricista', present: true, pay: 'R$380/dia' },
@@ -37,14 +29,11 @@ const teamRows = [
   { name: 'Lucas Mendes', role: 'Encanador', present: true, pay: 'R$350/dia' },
 ]
 
-const tag = (
-  <path d="M0 7.25V2.75C0 1.233 1.233 0 2.75 0H8.956C9.552 0 10.101 0.298 10.426 0.799L12.88 4.593C13.04 4.841 13.04 5.16 12.88 5.407L10.425 9.201C10.101 9.701 9.552 9.999 8.956 9.999H2.75C1.233 9.999 0 8.766 0 7.249V7.25Z" />
-)
-
 export default function WhySection() {
   const trackRef = useRef<HTMLDivElement>(null)
   const dotsRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
+  const [onScreen, setOnScreen] = useState(false)
 
   useEffect(() => {
     const track = trackRef.current
@@ -86,6 +75,17 @@ export default function WhySection() {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
+  }, [])
+
+  // O step 1 conta como ativo mesmo antes da seção entrar na tela (o progresso
+  // fica preso em 0), então a animação do leitor de notas só roda quando o
+  // trecho fixado está de fato visível.
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const io = new IntersectionObserver(([entry]) => setOnScreen(entry.isIntersecting))
+    io.observe(track)
+    return () => io.disconnect()
   }, [])
 
   const goToStep = (i: number) => {
@@ -140,64 +140,8 @@ export default function WhySection() {
               <div className="iphone-frame why-pin-phone">
                 <div className="iphone-inner">
                   <div className="why-pin-screens">
-                    {/* Screen 1 — Finance */}
-                    <div className={`iphone-screen ws-screen-finance why-pin-screen${active === 0 ? ' is-active' : ''}`}>
-                      <div className="wsf-budget">
-                        <div className="wsf-budget-row">
-                          <span className="wsf-budget-used">R$107.834,71</span>
-                          <span className="wsf-budget-total">R$220.000,00</span>
-                        </div>
-                        <div className="wsf-budget-bar"><div className="wsf-budget-fill"></div></div>
-                      </div>
-                      <div className="wsf-donut-wrap">
-                        <svg className="wsf-donut" viewBox="0 0 120 120">
-                          <circle cx="60" cy="60" r="46" fill="none" stroke="#5B7EF5" strokeWidth="16" strokeLinecap="round" className="wsf-seg-1" strokeDashoffset="-10" />
-                          <circle cx="60" cy="60" r="46" fill="none" stroke="#E8407E" strokeWidth="16" strokeLinecap="round" className="wsf-seg-2" strokeDashoffset="-124" />
-                          <circle cx="60" cy="60" r="46" fill="none" stroke="#E85440" strokeWidth="16" strokeLinecap="round" className="wsf-seg-3" strokeDashoffset="-196" />
-                          <circle cx="60" cy="60" r="46" fill="none" stroke="#F5A020" strokeWidth="16" strokeLinecap="round" className="wsf-seg-4" strokeDashoffset="-258" />
-                        </svg>
-                        <div className="wsf-donut-center">
-                          <div className="wsf-donut-num">472</div>
-                          <div className="wsf-donut-lbl">NOTAS</div>
-                        </div>
-                      </div>
-                      <div className="wsf-legend">
-                        <div className="wsf-leg-item"><svg className="wsf-tag" viewBox="0 0 14 10" style={{ fill: '#5B7EF5' }}>{tag}</svg>Terreno 45.1%</div>
-                        <div className="wsf-leg-item"><svg className="wsf-tag" viewBox="0 0 14 10" style={{ fill: '#E8407E' }}>{tag}</svg>Mão de obra 24.9%</div>
-                        <div className="wsf-leg-item"><svg className="wsf-tag" viewBox="0 0 14 10" style={{ fill: '#E85440' }}>{tag}</svg>Materiais</div>
-                        <div className="wsf-leg-item"><svg className="wsf-tag" viewBox="0 0 14 10" style={{ fill: '#F5A020' }}>{tag}</svg>Fundação</div>
-                      </div>
-                      <div className="wsf-bottom">
-                        <div className="wsf-search">
-                          <div className="wsf-search-bar">
-                            <svg className="wsf-search-icon" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
-                            <span className="wsf-search-placeholder">Buscar por nome ou empresa</span>
-                          </div>
-                          <div className="wsf-search-filter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="1.8"><line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="11" y1="18" x2="13" y2="18" /></svg>
-                          </div>
-                        </div>
-                        <div className="wsf-list">
-                          {financeRows.map((item, i) => (
-                            <div key={i}>
-                              {(i === 0 || item.date !== financeRows[i - 1]?.date) && (
-                                <div className="wsf-date">{item.date}</div>
-                              )}
-                              <div className={`wsf-row wsf-row--anim${Math.min(i + 1, 6)}`}>
-                                <div className="wsf-row-icon">
-                                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 17H8" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M8 13H16" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V8.41421C20 8.149 19.8946 7.89465 19.7071 7.70711L15.2929 3.29289C15.1054 3.10536 14.851 3 14.5858 3H6C5.46957 3 4.96086 3.21071 4.58579 3.58579C4.21071 3.96086 4 4.46957 4 5V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21Z" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M20 9H16C15.4696 9 14.9609 8.78929 14.5858 8.41421C14.2107 8.03914 14 7.53043 14 7V3" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                                </div>
-                                <div className="wsf-row-info">
-                                  <div className="wsf-row-name">{item.name}</div>
-                                  <div className="wsf-row-sub"><svg className="wsf-tag wsf-tag--sm" viewBox="0 0 14 10" style={{ fill: item.cat }}>{tag}</svg>{item.val} · Bigolin</div>
-                                </div>
-                                <div className="wsf-row-eye"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                    {/* Screen 1 — Leitor de notas com IA */}
+                    <ReceiptReaderScreen active={active === 0} playing={active === 0 && onScreen} />
 
                     {/* Screen 2 — Diary */}
                     <div className={`iphone-screen ws-screen-diary why-pin-screen${active === 1 ? ' is-active' : ''}`}>

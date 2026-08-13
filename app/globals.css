@@ -575,82 +575,61 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .iphone-frame.ws-phone .iphone-inner{border-radius:24px !important}
 .iphone-frame.ws-phone .iphone-inner::after{border-radius:24px !important}
 .ws-phone .iphone-inner{border-radius:24px !important}
-.ws-screen-finance{
-  background:#f5f5f0;padding:14px 10px 10px !important;height:440px;gap:0;overflow:hidden;
+/* Step 1: leitor de notas. A cena se posiciona sozinha num palco escalado —
+   aqui só entregamos a caixa da tela, sem padding e sem o flex do .iphone-screen. */
+.ws-screen-receipt{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#fff,#F6F3EE);
+  overflow:hidden;
+  display:block;
+  opacity:0;transform:scale(1.06);filter:blur(6px);pointer-events:none;
+  transition:opacity .55s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .55s ease;
+}
+.ws-screen-receipt.is-active{opacity:1;transform:none;filter:none}
+
+/* Loader de IA (ai-loader) — 15 anéis girando em 3D, cada um defasado do
+   anterior; é a defasagem que cria a ilusão de esfera.
+   Os atrasos são negativos, ao contrário do original: a etapa de leitura dura
+   ~2,4s e com atrasos positivos (até 2s) os anéis só apareceriam no fim dela.
+   Negativos, a animação já entra em curso e a defasagem é preservada.
+   As medidas estão em px do palco virtual da cena, que é escalado junto com o
+   telefone. O backdrop-filter do original saiu: 15 camadas empilhadas custam
+   caro e nesse tamanho não aparecem. */
+.rr-orb{position:relative;width:150px;height:150px;flex-shrink:0;transform-style:preserve-3d}
+.rr-ring{
+  position:absolute;inset:0;border-radius:50%;opacity:0;
+  border:3px solid;
+  border-top-color:rgba(222,99,51,.75);
+  border-right-color:rgba(222,99,51,.75);
+  border-bottom-color:rgba(151,93,193,.7);
+  border-left-color:rgba(151,93,193,.7);
+  transform-style:preserve-3d;
+}
+.rr-ring:nth-child(1){transform:rotate3d(0,1,0,24deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.133s}
+.rr-ring:nth-child(2){transform:rotate3d(0,1,0,48deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.267s}
+.rr-ring:nth-child(3){transform:rotate3d(0,1,0,72deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.4s}
+.rr-ring:nth-child(4){transform:rotate3d(0,1,0,96deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.533s}
+.rr-ring:nth-child(5){transform:rotate3d(0,1,0,120deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.667s}
+.rr-ring:nth-child(6){transform:rotate3d(0,1,0,144deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.8s}
+.rr-ring:nth-child(7){transform:rotate3d(0,1,0,168deg);animation:rr-spin-a 2s linear infinite;animation-delay:-.933s}
+.rr-ring:nth-child(8){transform:rotate3d(1,0,0,192deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.067s}
+.rr-ring:nth-child(9){transform:rotate3d(1,0,0,216deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.2s}
+.rr-ring:nth-child(10){transform:rotate3d(1,0,0,240deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.333s}
+.rr-ring:nth-child(11){transform:rotate3d(1,0,0,264deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.467s}
+.rr-ring:nth-child(12){transform:rotate3d(1,0,0,288deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.6s}
+.rr-ring:nth-child(13){transform:rotate3d(1,0,0,312deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.733s}
+.rr-ring:nth-child(14){transform:rotate3d(1,0,0,336deg);animation:rr-spin-b 3s linear infinite;animation-delay:-1.867s}
+.rr-ring:nth-child(15){transform:rotate3d(1,0,0,360deg);animation:rr-spin-b 3s linear infinite;animation-delay:-2s}
+@keyframes rr-spin-a{
+  from{opacity:1;transform:rotate3d(0,1,1,360deg)}
+  to{opacity:1;transform:rotate3d(0,1,1,0deg)}
+}
+@keyframes rr-spin-b{
+  from{opacity:1;transform:rotate3d(1,0,1,0deg)}
+  to{opacity:1;transform:rotate3d(1,0,1,360deg)}
 }
 
-/* budget bar */
-.wsf-budget{padding:0 4px 8px}
-.wsf-budget-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
-.wsf-budget-used{font-size:10px;font-weight:700;color:#008236}
-.wsf-budget-total{font-size:8.5px;color:#9ca3af}
-.wsf-budget-bar{height:3px;background:#d1fae5;border-radius:4px;overflow:hidden}
-.wsf-budget-fill{height:100%;width:0;background:#008236;border-radius:4px;animation:wsf-bar 1.6s .3s ease forwards}
-@keyframes wsf-bar{to{width:49%}}
-
-/* donut */
-.wsf-donut-wrap{position:relative;display:flex;align-items:center;justify-content:center;margin:4px 0 2px}
-.wsf-donut{width:86px;height:86px}
-.wsf-donut circle{transform-origin:center;transform:rotate(-90deg)}
-.wsf-donut-center{position:absolute;text-align:center;pointer-events:none}
-.wsf-donut-num{font-size:13px;font-weight:700;color:#1a1a1a;line-height:1}
-.wsf-donut-lbl{font-size:6.5px;font-weight:600;color:#9ca3af;letter-spacing:.5px;margin-top:2px}
-
-/* donut segment animations — each segment draws in from its offset */
-.wsf-seg-1{stroke-dasharray:0 289;animation:wsf-s1 1s .4s ease forwards}
-.wsf-seg-2{stroke-dasharray:0 289;animation:wsf-s2 1s .55s ease forwards}
-.wsf-seg-3{stroke-dasharray:0 289;animation:wsf-s3 1s .7s ease forwards}
-.wsf-seg-4{stroke-dasharray:0 289;animation:wsf-s4 1s .85s ease forwards}
-@keyframes wsf-s1{to{stroke-dasharray:94 195}}
-@keyframes wsf-s2{to{stroke-dasharray:52 237}}
-@keyframes wsf-s3{to{stroke-dasharray:42 247}}
-@keyframes wsf-s4{to{stroke-dasharray:21 268}}
-
-/* legend pills */
-.wsf-legend{display:flex;gap:4px;padding:0 10px 0;margin:0 -10px 12px;overflow-x:auto;flex-wrap:nowrap;flex-shrink:0;-webkit-overflow-scrolling:touch}
-.wsf-legend::-webkit-scrollbar{display:none}
-.wsf-leg-item{display:flex;align-items:center;gap:4px;font-size:7px;color:#374151;white-space:nowrap;background:#fff;border-radius:100px;padding:5px 10px 5px 7px;border:1px solid #ebebeb;flex-shrink:0}
-.wsf-tag{width:9px;height:7px;flex-shrink:0}
-.wsf-tag--sm{width:7px;height:6px}
-
-/* white bottom card */
-.wsf-bottom{background:#fff;border-radius:12px 12px 0 0;padding:10px 8px 0;margin:0 -10px;flex:1}
-
-/* search bar */
-.wsf-search{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-.wsf-search-bar{flex:1;display:flex;align-items:center;gap:4px;background:#fff;border-radius:100px;padding:5px 10px;border:1px solid #ebebeb}
-.wsf-search-icon{width:9px;height:9px;flex-shrink:0}
-.wsf-search-placeholder{font-size:7px;color:#9ca3af;flex:1}
-.wsf-search-filter{width:22px;height:22px;background:#fff;border-radius:8px;border:1px solid #ebebeb;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.wsf-search-filter svg{width:11px;height:11px}
-
-/* transaction list */
-.wsf-list{display:flex;flex-direction:column;gap:0}
-.wsf-date{font-size:7.5px;font-weight:700;color:#374151;padding:4px 0 3px}
-.wsf-row{
-  display:flex;align-items:center;gap:6px;
-  background:#fff;border-radius:10px;padding:6px 8px 6px 6px;margin-bottom:4px;
-  border:1px solid #ebebeb;
-}
-.wsf-row-icon{
-  width:24px;height:24px;flex-shrink:0;
-  background:#f4f4f2;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-}
-.wsf-row-icon svg{width:14px;height:14px}
-.wsf-row-info{flex:1;min-width:0}
-.wsf-row-name{font-size:8px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wsf-row-sub{display:flex;align-items:center;gap:3px;font-size:7px;color:#9ca3af;margin-top:1px}
-.wsf-row-eye{flex-shrink:0;color:#9ca3af;display:flex;align-items:center}
-.wsf-row-eye svg{width:12px;height:12px}
-
-/* row slide-in animations */
-.wsf-row--anim1{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.1s ease forwards}
-.wsf-row--anim2{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.22s ease forwards}
-.wsf-row--anim3{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.34s ease forwards}
-.wsf-row--anim4{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.46s ease forwards}
-.wsf-row--anim5{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.58s ease forwards}
-.wsf-row--anim6{opacity:0;transform:translateY(6px);animation:wsf-row 0.4s 1.70s ease forwards}
+/* ainda usado pelas linhas da equipe no step 3 */
 @keyframes wsf-row{to{opacity:1;transform:translateY(0)}}
 
 /* ── Step 2: Diary screen ── */
@@ -2060,6 +2039,20 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 }
 @media(max-width:768px){
   :root{--gutter:16px}
+  /* Hero em telas de celular */
+  .hero-h1{font-size:36px;margin-bottom:16px}
+  .hero-sub{font-size:14px}
+  /* Os dois botões dividem a linha em partes iguais em vez de carregarem um
+     min-width fixo — assim ficam lado a lado mesmo num aparelho de 320px. */
+  .hero-actions{flex-wrap:nowrap;gap:10px;width:100%}
+  .hero-actions .btn-store{
+    flex:1 1 0;min-width:0;max-width:200px;justify-content:center;
+    padding:10px 12px;gap:8px;
+  }
+  .hero-actions .btn-store svg{width:22px;height:22px}
+  .hero-actions .btn-store-text{white-space:nowrap}
+  .hero-actions .btn-store-pre{font-size:9px}
+  .hero-actions .btn-store-name{font-size:14px}
   .cf-stage{height:320px}
   /* Empilha os planos no mobile (antes 3 colunas cortavam os cards) */
   .plans-cards-inner{grid-template-columns:1fr;gap:32px}
