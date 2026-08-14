@@ -580,9 +580,10 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 .iphone-frame.ws-phone .iphone-inner{border-radius:24px !important}
 .iphone-frame.ws-phone .iphone-inner::after{border-radius:24px !important}
 .ws-phone .iphone-inner{border-radius:24px !important}
-/* Step 1: leitor de notas. A cena se posiciona sozinha num palco escalado —
-   aqui só entregamos a caixa da tela, sem padding e sem o flex do .iphone-screen. */
-.ws-screen-receipt{
+/* Caixa das cenas portadas (steps 1 e 2). Cada cena se posiciona sozinha num
+   palco escalado — aqui só entregamos a tela, sem padding e sem o flex do
+   .iphone-screen. */
+.ws-scene{
   position:absolute;inset:0;
   background:linear-gradient(180deg,#fff,#F6F3EE);
   overflow:hidden;
@@ -590,7 +591,7 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
   opacity:0;transform:scale(1.06);filter:blur(6px);pointer-events:none;
   transition:opacity .55s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .55s ease;
 }
-.ws-screen-receipt.is-active{opacity:1;transform:none;filter:none}
+.ws-scene.is-active{opacity:1;transform:none;filter:none}
 
 /* Loader de IA (ai-loader) — 15 anéis girando em 3D, cada um defasado do
    anterior; é a defasagem que cria a ilusão de esfera.
@@ -636,25 +637,6 @@ h1,h2,h3,.hero-h1,.sec-h2,.stat-num,.dl-cta-h2,.hero-badge{
 
 /* ainda usado pelas linhas da equipe no step 3 */
 @keyframes wsf-row{to{opacity:1;transform:translateY(0)}}
-
-/* ── Step 2: Diary screen ── */
-.ws-screen-diary{background:transparent;padding:14px 0 0 !important;height:440px;gap:0;overflow:hidden;display:flex;flex-direction:column}
-.wsd-path{flex-shrink:0;height:120px;padding:0}
-.wsd-card{background:#fff;border-radius:12px 12px 0 0;flex:1;padding:10px 0 0;overflow:hidden;display:flex;flex-direction:column;width:100%}
-.wsd-title{font-size:11px;font-weight:700;color:#111827;margin-bottom:10px;flex-shrink:0;font-family:var(--font-cardo),serif;padding:0 10px}
-.wsd-feed{display:flex;flex-direction:column;gap:12px;overflow:hidden;padding:0 10px}
-.wsd-entry{display:flex;flex-direction:column;gap:5px}
-.wsd-date-row{display:flex;align-items:center;gap:5px}
-.wsd-diamond{font-size:7px;color:#F5A020;flex-shrink:0}
-.wsd-date{font-size:7.5px;font-weight:700;color:#111827}
-.wsd-photo{height:80px;border-radius:8px;overflow:hidden;position:relative;flex-shrink:0}
-.wsd-photo-row{display:flex;gap:4px;height:80px;flex-shrink:0}
-.wsd-photo--half{flex:1;height:100%}
-.wsd-photo-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 60%)}
-.wsd-photo-tag{font-size:6.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.2);border-radius:4px;padding:2px 6px;backdrop-filter:blur(4px)}
-.wsd-desc{font-size:7px;color:#6b7280;line-height:1.5;margin:0}
-.wsd-entry--anim1{opacity:0;transform:translateY(6px);animation:wsf-row .4s .4s ease forwards}
-.wsd-entry--anim2{opacity:0;transform:translateY(6px);animation:wsf-row .4s .7s ease forwards}
 
 /* ── Step 2: Budget comparison screen ── */
 .ws-screen-budget{background:#fafaf8;padding:36px 10px 10px;height:440px;gap:0;overflow:hidden;display:flex;flex-direction:column}

@@ -1,13 +1,24 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import {
+  clamp,
+  easeInOutCubic,
+  easeInOutSine,
+  easeInQuad,
+  easeOutBack,
+  easeOutCubic,
+  kf,
+  ramp,
+  useSceneClock,
+  useSceneStage,
+} from '@/lib/scene'
 
 /* Cena "Leitor de Notas com IA", portada do Claude Design.
    O runtime original (CompositionStage/useComposition/Easing) ficou de fora —
-   aqui a composição roda num clock de requestAnimationFrame próprio e só as
-   easings que ela usa vieram junto. As coordenadas são as da cena original,
-   num palco virtual de 910px de altura escalado para a tela do iPhone; a
-   largura do palco acompanha o telefone para o conteúdo não ficar em letterbox. */
+   aqui a composição roda num clock de requestAnimationFrame próprio (ver
+   lib/scene). As coordenadas são as da cena original, num palco virtual de
+   910px de altura escalado para a tela do iPhone; a largura do palco acompanha
+   o telefone para o conteúdo não ficar em letterbox. */
 
 /* Igual a var(--orange), mas precisa ser hex literal: a cena compõe alfa
    concatenando (`${ACCENT}1F`), o que não funciona com custom property. */
@@ -33,44 +44,6 @@ const STILL_T = CUES.Salvo + 1.4
 const STAGE_H = 910
 const RW = 320
 const RH = 400
-
-const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v))
-
-type Ease = (t: number) => number
-
-const easeOutCubic: Ease = (t) => {
-  const u = t - 1
-  return u * u * u + 1
-}
-const easeInOutCubic: Ease = (t) =>
-  t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
-const easeInOutSine: Ease = (t) => -(Math.cos(Math.PI * t) - 1) / 2
-const easeInQuad: Ease = (t) => t * t
-const easeOutBack: Ease = (t) => {
-  const c1 = 1.70158
-  const c3 = c1 + 1
-  return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2)
-}
-
-type Keyframes = readonly (readonly [number, number])[]
-
-/* Interpola uma curva de keyframes [tempo, valor] no instante T. */
-function kf(T: number, pts: Keyframes, ease: Ease = easeInOutCubic): number {
-  if (T <= pts[0][0]) return pts[0][1]
-  for (let i = 0; i < pts.length - 1; i++) {
-    const [t0, v0] = pts[i]
-    const [t1, v1] = pts[i + 1]
-    if (T <= t1) {
-      const k = t1 === t0 ? 1 : (T - t0) / (t1 - t0)
-      return v0 + (v1 - v0) * ease(clamp(k, 0, 1))
-    }
-  }
-  return pts[pts.length - 1][1]
-}
-
-/* Rampa 0→1 entre dois instantes. */
-const ramp = (T: number, a: number, b: number, ease: Ease = easeOutCubic) =>
-  ease(clamp((T - a) / (b - a), 0, 1))
 
 const FIELDS = [
   { y: 96, h: 46, tag: 'FORNECEDOR' },
@@ -649,42 +622,8 @@ export default function ReceiptReaderScreen({
   /* Além de ativa, a seção está na viewport — só aí o clock roda. */
   playing: boolean
 }) {
-  const boxRef = useRef<HTMLDivElement>(null)
-  const [T, setT] = useState(0)
-  /* Palco virtual: altura fixa (as coordenadas da cena), largura acompanhando
-     o telefone real, medida abaixo. Os padrões são o caso desktop. */
-  const [stage, setStage] = useState({ scale: 460 / STAGE_H, vw: 276 / (460 / STAGE_H) })
-
-  useEffect(() => {
-    const el = boxRef.current
-    if (!el) return
-    const measure = () => {
-      const { width, height } = el.getBoundingClientRect()
-      if (width <= 0 || height <= 0) return
-      const scale = height / STAGE_H
-      setStage({ scale, vw: width / scale })
-    }
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!playing) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setT(STILL_T)
-      return
-    }
-    let raf = 0
-    const start = performance.now()
-    const tick = (now: number) => {
-      setT(((now - start) / 1000) % TOTAL)
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [playing])
+  const [boxRef, stage] = useSceneStage(STAGE_H)
+  const T = useSceneClock(playing, TOTAL, STILL_T)
 
   /* Esconde a emenda do loop. */
   const fade = ramp(T, 0, 0.4) * (1 - ramp(T, TOTAL - 0.4, TOTAL, easeInQuad))
@@ -692,7 +631,7 @@ export default function ReceiptReaderScreen({
     T > CUES.Captura + 0.02 ? Math.exp(-Math.max(0, T - (CUES.Captura + 0.04)) * 12) : 0
 
   return (
-    <div ref={boxRef} className={`ws-screen-receipt${active ? ' is-active' : ''}`}>
+    <div ref={boxRef} className={`ws-scene${active ? ' is-active' : ''}`}>
       <div
         style={{
           position: 'absolute',

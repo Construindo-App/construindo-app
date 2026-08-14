@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import ProgressScreen from '@/components/ProgressScreen'
 import ReceiptReaderScreen from '@/components/ReceiptReaderScreen'
 
 const STEPS = [
@@ -143,48 +144,8 @@ export default function WhySection() {
                     {/* Screen 1 — Leitor de notas com IA */}
                     <ReceiptReaderScreen active={active === 0} playing={active === 0 && onScreen} />
 
-                    {/* Screen 2 — Diary */}
-                    <div className={`iphone-screen ws-screen-diary why-pin-screen${active === 1 ? ' is-active' : ''}`}>
-                      <div className="wsd-path">
-                        <img src="/photo-path.png" alt="Progresso" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />
-                      </div>
-                      <div className="wsd-card">
-                        <div className="wsd-title">Diário da Obra</div>
-                        <div className="wsd-feed">
-                          <div className="wsd-entry wsd-entry--anim1">
-                            <div className="wsd-date-row">
-                              <span className="wsd-diamond">◆</span>
-                              <span className="wsd-date">8 de Janeiro, 2025</span>
-                            </div>
-                            <div className="wsd-photo">
-                              <img src="/log-1.png" alt="Fundação" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                              <div className="wsd-photo-overlay">
-                                <span className="wsd-photo-tag">Fundação</span>
-                              </div>
-                            </div>
-                            <p className="wsd-desc">Formas e armadura das vigas baldrame posicionadas. Terreno preparado para concretagem.</p>
-                          </div>
-                          <div className="wsd-entry wsd-entry--anim2">
-                            <div className="wsd-date-row">
-                              <span className="wsd-diamond">◆</span>
-                              <span className="wsd-date">2 de Janeiro, 2025</span>
-                            </div>
-                            <div className="wsd-photo-row">
-                              <div className="wsd-photo wsd-photo--half">
-                                <img src="/log-2-1.png" alt="Acabamento" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                                <div className="wsd-photo-overlay">
-                                  <span className="wsd-photo-tag">Acabamento</span>
-                                </div>
-                              </div>
-                              <div className="wsd-photo wsd-photo--half">
-                                <img src="/log-2-2.png" alt="Sanca" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                              </div>
-                            </div>
-                            <p className="wsd-desc">Gesso e sanca com LED instalados. Porcelanato aplicado na sala principal.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Screen 2 — Diário de obra */}
+                    <ProgressScreen active={active === 1} playing={active === 1 && onScreen} />
 
                     {/* Screen 3 — Team */}
                     <div className={`iphone-screen ws-screen-team why-pin-screen${active === 2 ? ' is-active' : ''}`}>
