@@ -17,8 +17,13 @@
   --max-w:1200px;
   --container-w:calc(var(--max-w) + var(--gutter) * 2);
 }
-html{scroll-behavior:smooth;overflow-x:clip}
-body{font-family:var(--font-jakarta),sans-serif;background:var(--white);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* O canvas (área de overscroll do iOS Safari, e o tom que ele dá às barras do
+   navegador) vem do fundo do <html>. Sem fundo próprio ele herdava o branco do
+   body e sobrava uma faixa branca embaixo do rodapé escuro. As duas metades
+   deixam cada extremidade com a cor da seção que está ali — hero em cima,
+   rodapé embaixo. O body cobre tudo isso, então nada muda na página. */
+html{scroll-behavior:smooth;overflow-x:clip;background:linear-gradient(to bottom,#F5F4ED 0 50%,#222222 50% 100%)}
+body{font-family:var(--font-jakarta),sans-serif;background:var(--white);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip;min-height:100vh}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
